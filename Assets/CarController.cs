@@ -19,14 +19,23 @@ public class CarController : MonoBehaviour
     public float driftTurnFactor = 5.0f;
     public float driftSlipFactor = 0.99f;
 
-    private bool isDrifting;
+    [Header("Boost Settings")]
+    public float boostChargeTime = 2.0f;
+    public float boostStrength = 15.0f;
 
+
+
+    private float speed;
     private float turn = 0.0f;
     private float targetTurn = 0.0f;
 
     private float drift = 0.0f;
     private float targetDrift = 0.0f;
 
+    private float boostTime = 0.0f;
+    private bool doBoost = false;
+
+    private bool isDrifting;
     private float accelerationInput = 0;
     private float steeringInput = 0;
 
@@ -40,6 +49,7 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        speed = maxSpeed;
         turn = turnFactor;
         drift = slipFactor;
     }
@@ -48,10 +58,11 @@ public class CarController : MonoBehaviour
     {
         ApplyDrifting();
 
+        ApplyBoosting();
+
         ApplyEngineForce();
 
-        //if (!isDrifting)
-            KillOrthogonalVelocity();
+        KillOrthogonalVelocity();
 
         ApplySteering();
     }
@@ -65,13 +76,27 @@ public class CarController : MonoBehaviour
         drift = Mathf.Lerp(drift, targetDrift, driftActivationSpeed * Time.fixedDeltaTime);
     }
 
+    private void ApplyBoosting()
+    {
+        if (isDrifting && steeringInput != 0 && accelerationInput > 0)
+            boostTime += Time.fixedDeltaTime;
+        else
+            boostTime = 0;
+
+        if (boostTime >= boostChargeTime && !isDrifting)
+        {
+            boostTime = 0;
+            rb.AddForce(transform.up * boostStrength, ForceMode2D.Impulse);
+        }
+    }
+
     private void ApplyEngineForce()
     {
         forwardVelocity = Vector2.Dot(transform.up, rb.velocity);
 
-        if ((forwardVelocity > maxSpeed && accelerationInput > 0) ||
-            (forwardVelocity < -maxSpeed * 0.5f && accelerationInput < 0) ||
-            (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput != 0))
+        if ((forwardVelocity > speed && accelerationInput > 0) ||
+            (forwardVelocity < -speed * 0.5f && accelerationInput < 0) ||
+            (rb.velocity.sqrMagnitude > speed * speed && accelerationInput != 0))
             return;
 
         if (accelerationInput == 0)
@@ -99,6 +124,23 @@ public class CarController : MonoBehaviour
         Vector2 rightVelocity = transform.right * Vector2.Dot(rb.velocity, transform.right);
 
         rb.velocity = forwardVelocity + rightVelocity * drift;
+    }
+    
+    public bool IsTireSkid(out float lateralVelocity, out bool isBraking)
+    {
+        lateralVelocity = Vector3.Dot(transform.right, rb.velocity);
+        isBraking = false;
+
+        if (accelerationInput < 0 && forwardVelocity > 0)
+        {
+            isBraking = true;
+            return true;
+        }
+
+        if (Mathf.Abs(lateralVelocity) > 4.0f)
+            return true;
+
+        return false;
     }
 
     public void SetInputVector(InputAction.CallbackContext context)
