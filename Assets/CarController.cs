@@ -78,16 +78,16 @@ public class CarController : MonoBehaviour
 
     private void ApplyBoosting()
     {
-        if (isDrifting && steeringInput != 0 && accelerationInput > 0)
-            boostTime += Time.fixedDeltaTime;
-        else
-            boostTime = 0;
-
         if (boostTime >= boostChargeTime && !isDrifting)
         {
             boostTime = 0;
             rb.AddForce(transform.up * boostStrength, ForceMode2D.Impulse);
         }
+
+        if (isDrifting && steeringInput != 0 && accelerationInput > 0)
+            boostTime += Time.fixedDeltaTime;
+        else
+            boostTime = 0;
     }
 
     private void ApplyEngineForce()
