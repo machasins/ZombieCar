@@ -8,7 +8,9 @@ public class CarController : MonoBehaviour
 {
     [Header("Car Settings")]
     public float maxSpeed = 20.0f;
+    public float reverseFactor = 0.75f;
     public float accelerationFactor = 30.0f;
+    public float minDrag = 1.0f;
     public float maxDrag = 3.0f;
     public float dragActivationSpeed = 3.0f;
     public float turnFactor = 3.5f;
@@ -33,7 +35,6 @@ public class CarController : MonoBehaviour
     private float targetDrift = 0.0f;
 
     private float boostTime = 0.0f;
-    private bool doBoost = false;
 
     private bool isDrifting;
     private float accelerationInput = 0;
@@ -95,14 +96,14 @@ public class CarController : MonoBehaviour
         forwardVelocity = Vector2.Dot(transform.up, rb.velocity);
 
         if ((forwardVelocity > speed && accelerationInput > 0) ||
-            (forwardVelocity < -speed * 0.5f && accelerationInput < 0) ||
+            (forwardVelocity < -speed * reverseFactor && accelerationInput < 0) ||
             (rb.velocity.sqrMagnitude > speed * speed && accelerationInput != 0))
             return;
 
         if (accelerationInput == 0)
             rb.drag = Mathf.Lerp(rb.drag, maxDrag, dragActivationSpeed * Time.fixedDeltaTime);
         else
-            rb.drag = 0;
+            rb.drag = minDrag;
 
         Vector2 engineForceVector = accelerationFactor * accelerationInput * transform.up;
 
@@ -111,7 +112,7 @@ public class CarController : MonoBehaviour
 
     private void ApplySteering()
     {
-        float minSpeedAllowTurning = Mathf.Clamp01(rb.velocity.sqrMagnitude / 64);
+        float minSpeedAllowTurning = Mathf.Clamp01(rb.velocity.magnitude / 8);
 
         rotationAngle -= steeringInput * turn * minSpeedAllowTurning;
 
