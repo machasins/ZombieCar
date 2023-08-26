@@ -14,6 +14,7 @@ public class WeaponProjectile : MonoBehaviour
 
     [Header("Projectile Settings")]
     public float projDamage;
+    public float projDamageCooldown;
     public Damage.Type projType = Damage.Type.Player;
     public float projSpeed = 1;
     public float projAcceleration = 0;
@@ -55,6 +56,7 @@ public class WeaponProjectile : MonoBehaviour
                 inheritedVelocity = car.velocity,
                 lifetime = projLifetime,
                 damage = projDamage,
+                damageCooldown = projDamageCooldown,
                 type = projType,
                 scaleRate = projScaleRate,
                 rotationRate = projRotationRate,

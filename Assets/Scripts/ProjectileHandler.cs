@@ -41,6 +41,7 @@ public class ProjectileHandler : MonoBehaviour
         Damage d = GetComponent<Damage>();
         d.damageAmount = data.damage;
         d.damageType = data.type;
+        d.damageCooldown = data.damageCooldown;
 
         if (!rb)
             Awake();

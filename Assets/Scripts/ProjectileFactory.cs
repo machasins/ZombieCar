@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class ProjectileFactory : MonoBehaviour
         public Vector2 inheritedVelocity;
         public float lifetime;
         public float damage;
+        public float damageCooldown;
         public Damage.Type type;
 
         public float scaleRate;

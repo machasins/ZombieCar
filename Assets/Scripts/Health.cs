@@ -55,8 +55,13 @@ public class Health : MonoBehaviour
 
         health = Mathf.Clamp(health - amount, 0, maxHealth);
 
-        isInvincible = true;
-        StartCoroutine(General.CallbackAfterTime(invincibilityTime, () => isInvincible = false));
+        if (invincibilityTime > 0)
+        {
+            isInvincible = true;
+            StartCoroutine(General.CallbackAfterTime(invincibilityTime, () => isInvincible = false));
+        }
+
+        Debug.Log("damaged " + gameObject.name + ", amount " + amount);
 
         return true;
     }
