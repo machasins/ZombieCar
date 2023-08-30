@@ -17553,7 +17553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d107000ca9b7c245b66ae2681d80496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 15
+  shootingRadius: 5
+  predictionPercent: 1
 --- !u!114 &913635181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17567,7 +17569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  followTime: 0.25
+  followTime: 0.1
 --- !u!1 &936222219
 GameObject:
   m_ObjectHideFlags: 0
@@ -29368,7 +29370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  followTime: 0.25
+  followTime: 0.1
 --- !u!114 &1377589692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29381,7 +29383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d107000ca9b7c245b66ae2681d80496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 15
+  shootingRadius: 5
+  predictionPercent: 0.5
 --- !u!1 &1406910281
 GameObject:
   m_ObjectHideFlags: 0

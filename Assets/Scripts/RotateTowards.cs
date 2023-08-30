@@ -7,8 +7,11 @@ public class RotateTowards : MonoBehaviour
 {
     public Transform target;
     public float followTime = 0.5f;
-    
+
     private Quaternion originalRotation;
+
+    private bool usePosition = false;
+    private Vector3 aimPosition;
 
     private void Awake()
     {
@@ -19,7 +22,15 @@ public class RotateTowards : MonoBehaviour
     {
         if (target != null)
             transform.DORotate(new Vector3(0, 0, Mathf.Repeat(Vector2.SignedAngle(Vector2.up, target.position - transform.position), 360)), followTime);
+        else if (usePosition)
+            transform.DORotate(new Vector3(0, 0, Mathf.Repeat(Vector2.SignedAngle(Vector2.up, aimPosition - transform.position), 360)), followTime);
         else
             transform.DOLocalRotate(originalRotation.eulerAngles, followTime);
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        usePosition = true;
+        aimPosition = position;
     }
 }
