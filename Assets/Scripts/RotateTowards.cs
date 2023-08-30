@@ -18,10 +18,7 @@ public class RotateTowards : MonoBehaviour
     private void Update()
     {
         if (target != null)
-        {
-            Quaternion look = Quaternion.LookRotation(target.position - transform.position, Vector3.forward);
-            transform.DORotate(new Vector3(0, 0, Mathf.Repeat(-look.eulerAngles.z, 360)), followTime);
-        }
+            transform.DORotate(new Vector3(0, 0, Mathf.Repeat(Vector2.SignedAngle(Vector2.up, target.position - transform.position), 360)), followTime);
         else
             transform.DOLocalRotate(originalRotation.eulerAngles, followTime);
     }

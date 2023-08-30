@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponProjectile : MonoBehaviour
 {
+    public Rigidbody2D mainCarController;
+
     [Header("Weapon Settings")]
     public int maxClipSize = 6;
     public int projectilesPerShot = 1;
@@ -24,7 +26,6 @@ public class WeaponProjectile : MonoBehaviour
     public float projRotationRate = 0;
 
     private static ProjectileFactory factory;
-    private Rigidbody2D car;
 
     private bool isReloading = false;
     private bool isShotDelayed = false;
@@ -35,8 +36,6 @@ public class WeaponProjectile : MonoBehaviour
     {
         if (!factory)
             factory = FindObjectOfType<ProjectileFactory>();
-        
-        car = transform.root.GetComponent<Rigidbody2D>();
 
         currentClip = maxClipSize;
     }
@@ -53,7 +52,7 @@ public class WeaponProjectile : MonoBehaviour
                 spawnSpeed = projSpeed + Random.Range(-shotSpeedVarience, shotSpeedVarience),
                 spawnScale = projScale,
                 spawnAcceleration = projAcceleration,
-                inheritedVelocity = car.velocity,
+                inheritedVelocity = mainCarController.velocity,
                 lifetime = projLifetime,
                 damage = projDamage,
                 damageCooldown = projDamageCooldown,
