@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -142,6 +143,22 @@ public class CarController : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    public void SetInputVector(Vector2 input)
+    {
+        steeringInput = input.x;
+        accelerationInput = input.y;
+    }
+
+    public void SetDrifting(float input)
+    {
+        isDrifting = input > 0;
+    }
+
+    public void SetDrifting(bool input)
+    {
+        isDrifting = input;
     }
 
     public void SetInputVector(InputAction.CallbackContext context)

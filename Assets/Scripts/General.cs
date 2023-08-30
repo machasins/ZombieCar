@@ -10,4 +10,10 @@ public class General
         yield return new WaitForSeconds(duration);
         callback();
     }
+
+    public static void StartCallbackAfterTime(MonoBehaviour obj, Callback precall, float duration, Callback callback)
+    {
+        precall();
+        obj.StartCoroutine(CallbackAfterTime(duration, callback));
+    }
 }
