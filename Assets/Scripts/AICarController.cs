@@ -25,7 +25,7 @@ public class AICarController : AIPath
         float steeringInput = Mathf.Sign(-tr.up.x * velocity2D.y + tr.up.y * velocity2D.x);
         float desiredAngle = Vector2.Angle(tr.up, velocity2D);
 
-        steeringInput *= Mathf.Lerp(0.0f, 1.0f, desiredAngle / 45.0f);
+        steeringInput *= Mathf.Lerp(0.0f, 1.0f, desiredAngle / 30.0f);
 
         if (desiredAngle > 45.0f)
             General.StartCallbackAfterTime(this, () => isDrifting = true, minDriftTime, () => isDrifting = false);

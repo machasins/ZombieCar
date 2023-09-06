@@ -5,4 +5,5 @@ using UnityEngine;
 public class WorldComponentReference : MonoBehaviour
 {
     public GameObject player;
+    public GameObject cameraPosition;
 }
