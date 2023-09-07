@@ -34,6 +34,7 @@ public class CarController : MonoBehaviour
 
     private float drift = 0.0f;
     private float targetDrift = 0.0f;
+    private float driftDirection = 0.0f;
 
     private float boostTime = 0.0f;
 
@@ -76,6 +77,11 @@ public class CarController : MonoBehaviour
 
         turn = Mathf.Lerp(turn, targetTurn, driftActivationSpeed * Time.fixedDeltaTime);
         drift = Mathf.Lerp(drift, targetDrift, driftActivationSpeed * Time.fixedDeltaTime);
+
+        if (isDrifting && driftDirection == 0 && steeringInput != 0)
+            driftDirection = Mathf.Sign(steeringInput);
+        else if (!isDrifting)
+            driftDirection = 0.0f;
     }
 
     private void ApplyBoosting()
@@ -86,7 +92,7 @@ public class CarController : MonoBehaviour
             rb.AddForce(transform.up * boostStrength, ForceMode2D.Impulse);
         }
 
-        if (isDrifting && steeringInput != 0 && accelerationInput > 0)
+        if (isDrifting && driftDirection != 0 && accelerationInput > 0)
             boostTime += Time.fixedDeltaTime;
         else
             boostTime = 0;
@@ -114,8 +120,9 @@ public class CarController : MonoBehaviour
     private void ApplySteering()
     {
         float minSpeedAllowTurning = Mathf.Clamp01(rb.velocity.magnitude / 8);
+        float driftSteering = (isDrifting) ? Mathf.Lerp(0.25f, 1.0f, (steeringInput * driftDirection + 1.0f) / 2.0f) * driftDirection : steeringInput;
 
-        rotationAngle -= steeringInput * turn * minSpeedAllowTurning;
+        rotationAngle -= driftSteering * turn * minSpeedAllowTurning;
 
         rb.MoveRotation(rotationAngle);
     }
