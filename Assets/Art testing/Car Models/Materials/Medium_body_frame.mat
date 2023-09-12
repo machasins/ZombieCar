@@ -44,6 +44,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _tex_test:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -66,8 +70,9 @@ Material:
     - _Thickness: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DmgLocation: {r: -0.43, g: -0.09, b: 0, a: 0}
+    - _DmgLocation: {r: 3.05, g: -0.3, b: 0, a: 0}
     - _DmgRGB: {r: 0.8, g: 0.9, b: 1, a: 0}
+    - _DmgScale: {r: 0.7, g: 0.5, b: 0, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

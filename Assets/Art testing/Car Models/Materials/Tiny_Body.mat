@@ -41,6 +41,22 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DamageMask_df820be81a4b4a6ea7c5a4683208faa0_MainTex_3680036892:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DamageMask_ff238fe162f04857bbe130815d828dd6_MainTex_3680036892:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Dmg1:
+        m_Texture: {fileID: 2800000, guid: eb004a204fc6ce947a5f3d4366c284e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Dmg2:
+        m_Texture: {fileID: 2800000, guid: eb004a204fc6ce947a5f3d4366c284e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DmgTex:
         m_Texture: {fileID: 2800000, guid: eb004a204fc6ce947a5f3d4366c284e1, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -57,8 +73,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_b8a9bdc6a8d34433a644c774487350ca_Out_0:
+        m_Texture: {fileID: 2800000, guid: eb004a204fc6ce947a5f3d4366c284e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _tex_test:
-        m_Texture: {fileID: 2800000, guid: 85bcf9e1ac6c49944b111fa8e87ee14f, type: 3}
+        m_Texture: {fileID: 2800000, guid: eb004a204fc6ce947a5f3d4366c284e1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -75,11 +95,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _1Rot: 0
+    - _1Thickness: 0.1
+    - _2Rot: 0
+    - _2Thickness: 0.03
     - _Alpha: 1
     - _ColorMask: 15
     - _DmgRot: 0
     - _DmgScale: 0.56
-    - _DmgThickness: 0.01
+    - _DmgThickness: 0.04
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -91,10 +115,15 @@ Material:
     - _Thickness: 0.02
     - _UseUIAlphaClip: 0
     m_Colors:
+    - _1Loc: {r: -0.05, g: -0.24, b: 0, a: 0}
+    - _1Scal: {r: 0.25, g: -0.83, b: 0, a: 0}
+    - _2Loc: {r: -0.35, g: 0.02, b: 0, a: 0}
+    - _2Scal: {r: 0.36, g: 0.62, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 0.3529412}
-    - _DmgLocation: {r: 0, g: 0, b: 0, a: 0}
-    - _DmgRGB: {r: 1, g: 1, b: 1, a: 0}
-    - _DmgScale: {r: 0.8, g: 0.94, b: 0, a: 0}
+    - _DmgLocation: {r: 0.28, g: 0, b: 0, a: 0}
+    - _DmgRGB: {r: 0.8, g: 1, b: 1, a: 0}
+    - _DmgScale: {r: 0.41, g: 0.94, b: 0, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Vector4: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
