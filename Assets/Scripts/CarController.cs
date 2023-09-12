@@ -1,34 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
     [Header("Car Settings")]
-    public float maxSpeed = 20.0f;
-    public float reverseFactor = 0.75f;
+    public float maxSpeed = 10.0f;
+    public float reverseFactor = 0.95f;
     public float accelerationFactor = 30.0f;
     public float minDrag = 1.0f;
     public float maxDrag = 3.0f;
-    public float dragActivationSpeed = 3.0f;
+    public float dragInterpSpeed = 3.0f;
     public float turnFactor = 3.5f;
-    public float slipFactor = 0.95f;
+    [Range(0,1)] public float slipFactor = 0.95f;
 
     [Header("Drifting Settings")]
-    public float driftActivationSpeed = 7.0f;
+    public float driftInterpSpeed = 7.0f;
     public float driftTurnFactor = 5.0f;
-    public float driftSlipFactor = 0.99f;
+    [Range(0,1)] public float driftSlipFactor = 0.99f;
 
     [Header("Boost Settings")]
     public float boostChargeTime = 2.0f;
     public float boostStrength = 15.0f;
 
 
-
-    private float speed;
     private float turn = 0.0f;
     private float targetTurn = 0.0f;
 
@@ -52,7 +49,6 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        speed = maxSpeed;
         turn = turnFactor;
         drift = slipFactor;
     }
@@ -75,8 +71,8 @@ public class CarController : MonoBehaviour
         targetTurn = (isDrifting) ? driftTurnFactor : turnFactor;
         targetDrift = (isDrifting) ? driftSlipFactor : slipFactor;
 
-        turn = Mathf.Lerp(turn, targetTurn, driftActivationSpeed * Time.fixedDeltaTime);
-        drift = Mathf.Lerp(drift, targetDrift, driftActivationSpeed * Time.fixedDeltaTime);
+        turn = Mathf.Lerp(turn, targetTurn, driftInterpSpeed * Time.fixedDeltaTime);
+        drift = Mathf.Lerp(drift, targetDrift, driftInterpSpeed * Time.fixedDeltaTime);
 
         if (isDrifting && driftDirection == 0 && steeringInput != 0)
             driftDirection = Mathf.Sign(steeringInput);
@@ -102,13 +98,13 @@ public class CarController : MonoBehaviour
     {
         forwardVelocity = Vector2.Dot(transform.up, rb.velocity);
 
-        if ((forwardVelocity > speed && accelerationInput > 0) ||
-            (forwardVelocity < -speed * reverseFactor && accelerationInput < 0) ||
-            (rb.velocity.sqrMagnitude > speed * speed && accelerationInput != 0))
+        if ((forwardVelocity > maxSpeed && accelerationInput > 0) ||
+            (forwardVelocity < -maxSpeed * reverseFactor && accelerationInput < 0) ||
+            (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput != 0))
             return;
 
         if (accelerationInput == 0)
-            rb.drag = Mathf.Lerp(rb.drag, maxDrag, dragActivationSpeed * Time.fixedDeltaTime);
+            rb.drag = Mathf.Lerp(rb.drag, maxDrag, dragInterpSpeed * Time.fixedDeltaTime);
         else
             rb.drag = minDrag;
 

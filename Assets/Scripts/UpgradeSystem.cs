@@ -24,11 +24,6 @@ public class UpgradeSystem : MonoBehaviour
 
     private void Awake()
     {
-        activeUpgrades = new();
-
-        foreach (string type in upgradeTypes)
-            activeUpgrades.Add(PlayerPrefs.GetInt("upgrade" + type + "Type", 0));
-
         upgrades = new()
         {
             engines,
@@ -37,6 +32,16 @@ public class UpgradeSystem : MonoBehaviour
             grills,
             doors
         };
+
+        ReadUpgrades();
+    }
+
+    public void ReadUpgrades()
+    {
+        activeUpgrades = new();
+
+        foreach (string type in upgradeTypes)
+            activeUpgrades.Add(PlayerPrefs.GetInt("upgrade" + type + "Type", 0));
 
         for (int i = 0; i < activeUpgrades.Count; ++i)
             for (int j = 0; j < upgrades[i].Count; ++j)

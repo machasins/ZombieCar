@@ -5,37 +5,29 @@ using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
-    public InputActionReference weaponFireInput;
-
-    private WeaponProjectile currentWeapon;
-    private InputAction input;
-
     private bool isFiring = false;
 
-    private void Start()
+    private static WorldComponentReference wcr;
+
+    private void Awake()
     {
-        currentWeapon = GetComponentInChildren<WeaponProjectile>();
-        input = weaponFireInput.ToInputAction();
+        if (wcr == null)
+            wcr = FindObjectOfType<WorldComponentReference>();
     }
 
     private void Update()
     {
-        if (!isFiring && input.WasPressedThisFrame())
+        if (!isFiring && wcr.weaponFireInput.action.WasPressedThisFrame())
             isFiring = true;
-        if (isFiring && input.WasReleasedThisFrame())
+        if (isFiring && wcr.weaponFireInput.action.WasReleasedThisFrame())
             isFiring = false;
 
         if (isFiring)
             Shoot();
     }
 
-    public void ChangeWeapon(WeaponProjectile weapon)
-    {
-        currentWeapon = weapon;
-    }
-
     public void Shoot()
     {
-        currentWeapon.Shoot();
+        GetComponentInChildren<WeaponProjectile>().Shoot();
     }
 }
