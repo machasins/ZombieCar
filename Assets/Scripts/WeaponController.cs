@@ -15,6 +15,11 @@ public class WeaponController : MonoBehaviour
             wcr = FindObjectOfType<WorldComponentReference>();
     }
 
+    private void OnEnable()
+    {
+        isFiring = false;
+    }
+
     private void Update()
     {
         if (!isFiring && wcr.weaponFireInput.action.WasPressedThisFrame())
@@ -28,6 +33,7 @@ public class WeaponController : MonoBehaviour
 
     public void Shoot()
     {
-        GetComponentInChildren<WeaponProjectile>().Shoot();
+        if (gameObject.activeInHierarchy)
+            GetComponentInChildren<WeaponProjectile>().Shoot();
     }
 }

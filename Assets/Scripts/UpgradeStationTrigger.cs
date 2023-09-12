@@ -13,9 +13,19 @@ public class UpgradeStationTrigger : MonoBehaviour
             wcr = FindObjectOfType<WorldComponentReference>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        CollisionCheck(collision);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject == wcr.player && wcr.interactInput.action.WasPressedThisFrame())
+        CollisionCheck(collision);
+    }
+
+    private void CollisionCheck(Collider2D collision)
+    {
+        if (collision.gameObject == wcr.player && wcr.interactInput.action.WasPerformedThisFrame())
             wcr.ToggleUpgradeUI(true);
     }
 }
