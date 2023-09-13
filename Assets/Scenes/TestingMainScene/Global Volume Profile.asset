@@ -44,6 +44,28 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-2764855337587027123
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.19400969, b: 0, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.5586884, b: 0, a: 1}
+  balance:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &-1470223171069385070
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -67,7 +89,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.91132075, b: 0.759434, a: 1}
   hueShift:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   saturation:
     m_OverrideState: 0
@@ -90,6 +112,35 @@ MonoBehaviour:
   - {fileID: -9128228741303177676}
   - {fileID: 6652451965826191997}
   - {fileID: 7690474523323938194}
+  - {fileID: 2204269512130676170}
+  - {fileID: 7558824067072636593}
+  - {fileID: 9062640977158982183}
+  - {fileID: -2764855337587027123}
+--- !u!114 &2204269512130676170
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 9
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.32
+  response:
+    m_OverrideState: 0
+    m_Value: 1
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
 --- !u!114 &6652451965826191997
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -109,6 +160,34 @@ MonoBehaviour:
   tint:
     m_OverrideState: 0
     m_Value: 2.2
+--- !u!114 &7558824067072636593
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.1
+  xMultiplier:
+    m_OverrideState: 0
+    m_Value: 0.572
+  yMultiplier:
+    m_OverrideState: 0
+    m_Value: 0
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 1
+    m_Value: 1.01
 --- !u!114 &7690474523323938194
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -145,8 +224,24 @@ MonoBehaviour:
     m_Value: 1
   dirtTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: eb004a204fc6ce947a5f3d4366c284e1, type: 3}
+    m_Value: {fileID: 2800000, guid: 1378a22620a2a4842a7169deb4df70f8, type: 3}
     dimension: 1
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &9062640977158982183
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.033

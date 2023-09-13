@@ -98,7 +98,7 @@ Material:
     - _1Rot: 0
     - _1Thickness: 0.1
     - _2Rot: 0
-    - _2Thickness: 0.03
+    - _2Thickness: 0.01
     - _Alpha: 1
     - _ColorMask: 15
     - _DmgRot: 0
@@ -117,7 +117,7 @@ Material:
     m_Colors:
     - _1Loc: {r: -0.05, g: -0.24, b: 0, a: 0}
     - _1Scal: {r: 0.25, g: -0.83, b: 0, a: 0}
-    - _2Loc: {r: -0.35, g: 0.02, b: 0, a: 0}
+    - _2Loc: {r: -0.29, g: -0.23, b: 0, a: 0}
     - _2Scal: {r: 0.36, g: 0.62, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 0.3529412}
     - _DmgLocation: {r: 0.28, g: 0, b: 0, a: 0}
