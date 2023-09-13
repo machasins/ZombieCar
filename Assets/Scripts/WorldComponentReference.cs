@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class WorldComponentReference : MonoBehaviour
 {
     public GameObject player;
+    public GameObject cursor;
     public GameObject cameraPosition;
     public GameObject upgradeMenu;
 

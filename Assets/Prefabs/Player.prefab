@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8406001559854566855}
   - component: {fileID: 7495286590251904681}
   - component: {fileID: 1821136412909761521}
+  - component: {fileID: 8934367860593536111}
   m_Layer: 6
   m_Name: FrontSpike (1)
   m_TagString: Untagged
@@ -78,6 +79,22 @@ MonoBehaviour:
   minSpeed: 10
   maxSpeed: 15
   minDamage: 1
+--- !u!114 &8934367860593536111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687849205457188631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: The Rammer MK1
+  description: Ramming speed!
 --- !u!1 &1508368411276617880
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508368411276617881}
+  - component: {fileID: 7705485545417867297}
   m_Layer: 6
   m_Name: Nothing
   m_TagString: Untagged
@@ -109,6 +127,22 @@ Transform:
   m_Father: {fileID: 1508368412000558309}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7705485545417867297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508368411276617880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: Nothing
+  description: Nothing at all.
 --- !u!1 &1508368411418842277
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +248,7 @@ MonoBehaviour:
   maxDrag: 3
   dragInterpSpeed: 3
   turnFactor: 3.5
-  slipFactor: 0.95
+  slipFactor: 0.7
   driftInterpSpeed: 7
   driftTurnFactor: 6
   driftSlipFactor: 0.99
@@ -233,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 3350007798814404531
+  uniqueID: 6105584905755267162
   updateError: 1
   checkTime: 0.1
 --- !u!114 &1508368411418842204
@@ -5285,6 +5319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508368412067784919}
   - component: {fileID: 1508368412067784904}
+  - component: {fileID: 5787370230962806024}
   m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
@@ -5336,6 +5371,22 @@ MonoBehaviour:
   projScale: {x: 0.2, y: 0.6}
   projScaleRate: 0
   projRotationRate: 0
+--- !u!114 &5787370230962806024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508368412067784918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: 
+  description: High spread and devastation.
 --- !u!1 &1508368412276806244
 GameObject:
   m_ObjectHideFlags: 0
@@ -5346,6 +5397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508368412276806245}
   - component: {fileID: 1508368412276806246}
+  - component: {fileID: 7439937596912921097}
   m_Layer: 6
   m_Name: Flamethrower
   m_TagString: Untagged
@@ -5397,6 +5449,22 @@ MonoBehaviour:
   projScale: {x: 0.1, y: 0.1}
   projScaleRate: 1
   projRotationRate: 360
+--- !u!114 &7439937596912921097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508368412276806244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: 
+  description: Destroy your enemies with the power of fire.
 --- !u!1 &1508368412728305264
 GameObject:
   m_ObjectHideFlags: 0
@@ -10376,6 +10444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508368412913972764}
+  - component: {fileID: 4171289565440811755}
   m_Layer: 6
   m_Name: Nothing
   m_TagString: Untagged
@@ -10398,6 +10467,22 @@ Transform:
   m_Father: {fileID: 1508368412809175687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4171289565440811755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508368412913972763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: Nothing
+  description: Nothing at all.
 --- !u!1 &1508368413046196757
 GameObject:
   m_ObjectHideFlags: 0
@@ -10469,6 +10554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 511511810548247139}
+  - component: {fileID: 5592432459366487121}
   m_Layer: 6
   m_Name: Default
   m_TagString: Untagged
@@ -10491,6 +10577,22 @@ Transform:
   m_Father: {fileID: 817753672806239948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5592432459366487121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792459658738776436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: Default
+  description: Might be time for a replacement.
 --- !u!1 &2897954798919664932
 GameObject:
   m_ObjectHideFlags: 0
@@ -10503,6 +10605,7 @@ GameObject:
   - component: {fileID: 4208353414894745263}
   - component: {fileID: 8155265903017009088}
   - component: {fileID: 6652917416986628879}
+  - component: {fileID: 3820626558899480081}
   m_Layer: 6
   m_Name: SideSaw (1)
   m_TagString: Untagged
@@ -10593,6 +10696,22 @@ MonoBehaviour:
   damageAmount: 0.1
   damageCooldown: 0.05
   damageType: 1
+--- !u!114 &3820626558899480081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897954798919664932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: Door Saws
+  description: Attach some saws to your doors for side swipe damage.
 --- !u!1 &3864794840177161691
 GameObject:
   m_ObjectHideFlags: 0
@@ -10603,6 +10722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913371656300727264}
   - component: {fileID: 7497157885247822568}
+  - component: {fileID: 2834463411429898010}
   m_Layer: 6
   m_Name: Pistol
   m_TagString: Untagged
@@ -10654,6 +10774,22 @@ MonoBehaviour:
   projScale: {x: 0.3, y: 0.7}
   projScaleRate: 0
   projRotationRate: 0
+--- !u!114 &2834463411429898010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864794840177161691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: 
+  description: Standard single shot turret.
 --- !u!1 &4757454836876445841
 GameObject:
   m_ObjectHideFlags: 0
@@ -10663,6 +10799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8011927072516194870}
+  - component: {fileID: 6151083849696119550}
   m_Layer: 6
   m_Name: Default
   m_TagString: Untagged
@@ -10685,6 +10822,22 @@ Transform:
   m_Father: {fileID: 4501246931484721139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6151083849696119550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4757454836876445841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: Default
+  description: The default engine. Not that fast.
 --- !u!1 &4958665063434514911
 GameObject:
   m_ObjectHideFlags: 0
@@ -10697,6 +10850,7 @@ GameObject:
   - component: {fileID: 5012925329734456803}
   - component: {fileID: 5240014065762360803}
   - component: {fileID: 7018847217968446425}
+  - component: {fileID: 5714182651353710616}
   m_Layer: 6
   m_Name: SideSaw (2)
   m_TagString: Untagged
@@ -10787,6 +10941,22 @@ MonoBehaviour:
   damageAmount: 0.25
   damageCooldown: 0.05
   damageType: 1
+--- !u!114 &5714182651353710616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958665063434514911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: Panel Saws
+  description: The bigger the better.
 --- !u!1 &5169225246551721670
 GameObject:
   m_ObjectHideFlags: 0
@@ -10832,6 +11002,7 @@ GameObject:
   - component: {fileID: 1147288758669176931}
   - component: {fileID: 4773122725116168385}
   - component: {fileID: 267784047225401681}
+  - component: {fileID: 4447171814384343444}
   m_Layer: 6
   m_Name: FrontSpike (2)
   m_TagString: Untagged
@@ -10899,6 +11070,22 @@ MonoBehaviour:
   minSpeed: 10
   maxSpeed: 15
   minDamage: 1
+--- !u!114 &4447171814384343444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676489383480265027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d613b5ba34514aba87a650b95bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doCarController: 0
+  doHealth: 0
+  title: The Rammer MK2
+  description: Wider area and more damage.
 --- !u!1 &8681613064111828752
 GameObject:
   m_ObjectHideFlags: 0
@@ -11144,6 +11331,22 @@ PrefabInstance:
     - target: {fileID: 5079224167726639406, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: m_Name
       value: Engine (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: name
+      value: Speed MK2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: title
+      value: Booster MK2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: description
+      value: Race across the wastelands with incredible speed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: doCarController
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6309871211108839672, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: maxSpeed
@@ -11469,6 +11672,22 @@ PrefabInstance:
     - target: {fileID: 5079224167726639406, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: m_Name
       value: Engine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: name
+      value: Speed MK1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: title
+      value: Booster MK1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: description
+      value: Feel the speed and increase in boost strength.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: doCarController
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6309871211108839672, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: maxSpeed
@@ -11904,6 +12123,18 @@ PrefabInstance:
       value: Tire (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: name
+      value: Racing Tires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: title
+      value: Race Tires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: description
+      value: Race circles around em.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: doCarController
       value: 1
       objectReference: {fileID: 0}
@@ -11997,6 +12228,22 @@ PrefabInstance:
     - target: {fileID: 5079224167726639406, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: m_Name
       value: Tire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: name
+      value: Wasteland Special
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: title
+      value: Wasteland Special
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: description
+      value: Tires specially designed to combat the terrors of the wasteland.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309871211108839670, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
+      propertyPath: doCarController
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6309871211108839672, guid: e27ee3225c27fd24f94dd77cdc25ed04, type: 3}
       propertyPath: turnFactor

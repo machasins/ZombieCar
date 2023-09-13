@@ -36,6 +36,11 @@ public class UpgradeSystem : MonoBehaviour
         ReadUpgrades();
     }
 
+    public int GetUpgrade(int upgradeType)
+    {
+        return activeUpgrades[upgradeType];
+    }
+
     public void ReadUpgrades()
     {
         activeUpgrades = new();
@@ -48,7 +53,7 @@ public class UpgradeSystem : MonoBehaviour
                 upgrades[i][j].SetActive(j == activeUpgrades[i]);
     }
 
-    private void ChangeUpgrade(int type, int index)
+    public void ChangeUpgrade(int type, int index)
     {
         PlayerPrefs.SetInt("upgrade" + upgradeTypes[type] + "Type", index);
         activeUpgrades[type] = index;

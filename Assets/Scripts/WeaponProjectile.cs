@@ -40,6 +40,14 @@ public class WeaponProjectile : MonoBehaviour
         currentClip = maxClipSize;
     }
 
+    private void OnEnable()
+    {
+        isReloading = false;
+        isShotDelayed = false;
+
+        currentClip = maxClipSize;
+    }
+
     public void Shoot()
     {
         if (isReloading || isShotDelayed)
