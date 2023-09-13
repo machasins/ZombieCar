@@ -101,4 +101,14 @@ public class Upgrade : MonoBehaviour
             }
         }
     }
+
+    public string GetName()
+    {
+        return (title == "") ? gameObject.name : title;
+    }
+
+    public string GetDesc()
+    {
+        return (description == "") ? "##DESCRIPTION NOT FOUND##" : description;
+    }
 }

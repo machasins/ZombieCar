@@ -68,19 +68,17 @@ public class UpgradeMenuHandler : MonoBehaviour
 
         CreateSubBackButton(subMenuContainer.transform, parent.gameObject, currOffset);
 
-        // Variables for button
-        Transform currUpgrade = upgradeType.GetChild(playerUpgrades.GetComponentInParent<UpgradeSystem>().GetUpgrade(upgradeIndex));
-        Upgrade upgradeInfo = currUpgrade.GetComponent<Upgrade>();
-        string title = (upgradeInfo && upgradeInfo.title != "") ? upgradeInfo.title : currUpgrade.name;
-        string desc = (upgradeInfo && upgradeInfo.description != "") ? upgradeInfo.description : "##Description not found##";
-
         // Set up Main Menu Button
         Button b = mainMenuButton.GetComponent<Button>();
         b.onClick.AddListener(delegate { parent.gameObject.SetActive(false); });
         b.onClick.AddListener(delegate { subMenuContainer.SetActive(true); });
         b.onClick.AddListener(delegate { menuText.text = subMenuContainer.name; });
-        b.onClick.AddListener(delegate { equipedText.text = title; });
-        b.onClick.AddListener(delegate { descText.text = desc; });
+        b.onClick.AddListener(delegate { 
+            Upgrade u = upgradeType.GetChild(playerUpgrades.GetComponentInParent<UpgradeSystem>().GetUpgrade(upgradeIndex)).GetComponent<Upgrade>(); 
+            equipedText.text = (u) ? u.GetName() : "##NAME NOT FOUND##"; });
+        b.onClick.AddListener(delegate { 
+            Upgrade u = upgradeType.GetChild(playerUpgrades.GetComponentInParent<UpgradeSystem>().GetUpgrade(upgradeIndex)).GetComponent<Upgrade>();
+            descText.text = (u) ? u.GetDesc() : "##DESCRIPTION NOT FOUND##"; });
 
         subMenuContainer.SetActive(false);
     }
