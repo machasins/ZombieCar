@@ -19878,11 +19878,6 @@ MonoBehaviour:
   projScale: {x: 0.2, y: 0.6}
   projScaleRate: 0
   projRotationRate: 0
---- !u!4 &1798437093 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7520467341385882620, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-  m_PrefabInstance: {fileID: 5363811419785936652}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1827705905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 275b68cf6c1b03d4b874ba83f8576b1b, type: 3}
@@ -26056,18 +26051,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712143613}
     m_Modifications:
-    - target: {fileID: 4003077837801058285, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: cursorPositionInfluence
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4003077837801058285, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: playerVelocityInfluence
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4003077837801058285, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: playerVelocityInfluenceScale
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5363811419562074312, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -26080,10 +26063,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 981876097}
-    - target: {fileID: 5363811419562074313, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 1798437093}
     - target: {fileID: 5363811419562074314, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -26131,26 +26110,6 @@ PrefabInstance:
     - target: {fileID: 5363811419562074319, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
       propertyPath: m_Name
       value: CameraFollow
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363811419818264435, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: orthographic size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363811419818264460, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363811419818264460, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363811419818264460, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363811420252937861, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
-      propertyPath: m_Damping
-      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
