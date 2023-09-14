@@ -30,18 +30,20 @@ public class WeaponProjectile : MonoBehaviour
     private bool isReloading = false;
     private bool isShotDelayed = false;
 
+    private float reloadProgress;
+
     private int currentClip = 0;
 
     private void Start()
     {
         if (!factory)
             factory = FindObjectOfType<ProjectileFactory>();
-
-        currentClip = maxClipSize;
     }
 
     private void OnEnable()
     {
+        reloadProgress = 1.0f;
+
         isReloading = false;
         isShotDelayed = false;
 
@@ -81,10 +83,25 @@ public class WeaponProjectile : MonoBehaviour
         if (--currentClip <= 0)
         {
             isReloading = true;
-            StartCoroutine(General.CallbackAfterTime(reloadDelay, () => {
-                currentClip = maxClipSize;
-                isReloading = false;
-            }));
+            StartCoroutine(General.CallbackAfterTimeTracker(reloadDelay,
+                x => { reloadProgress = x / reloadDelay; }, 
+                () => { currentClip = maxClipSize; isReloading = false; }
+            ));
         }
+    }
+
+    public int GetCurrentClip()
+    {
+        return currentClip;
+    }
+
+    public float GetReloadProgress()
+    {
+        return reloadProgress;
+    }
+
+    public bool IsReloading()
+    {
+        return isReloading;
     }
 }

@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class DisplayHealth : MonoBehaviour
 {
+    [Header("General Settings")]
+    public Health healthToTrack;
     public Image healthBar;
     public Image healthBarRecentDamage;
-    public CanvasGroup canvas;
+    public float recentDamageTime = 1.0f;
 
+    [Header("Fade Settings")]
+    public bool doFade = true;
+    public CanvasGroup canvas;
     public float timeToFade = 2.0f;
     public float fadeTime = 0.25f;
-    public float recentDamageTime = 1.0f;
 
     private float time;
     private bool isFadedOut = true;
@@ -22,7 +26,11 @@ public class DisplayHealth : MonoBehaviour
 
     private void Awake()
     {
-        health = GetComponentInParent<Health>();
+        health = (healthToTrack) ? healthToTrack : GetComponentInParent<Health>();
+
+        if (!health)
+            health = FindObjectOfType<WorldComponentReference>().player.GetComponent<Health>();
+
         health.onDamage.AddListener(OnHealthChange);
         health.onHeal.AddListener(OnHealthChange);
 
@@ -35,17 +43,23 @@ public class DisplayHealth : MonoBehaviour
     {
         recentDamage.ChangeValues(healthBarRecentDamage.fillAmount, healthBar.fillAmount, recentDamageTime);
 
-        time += Time.deltaTime;
-        if (time >= timeToFade && !isFadedOut)
-            canvas.DOFade(0.0f, fadeTime).OnComplete(() => isFadedOut = true);
+        if (doFade)
+        {
+            time += Time.deltaTime;
+            if (time >= timeToFade && !isFadedOut)
+                canvas.DOFade(0.0f, fadeTime).OnComplete(() => isFadedOut = true);
+        }
     }
 
     private void OnHealthChange()
     {
         healthBar.fillAmount = health.GetHealthPercentage();
 
-        time = 0.0f;
-        if (isFadedOut)
-            canvas.DOFade(1.0f, fadeTime).OnComplete(() => isFadedOut = false);
+        if (doFade)
+        {
+            time = 0.0f;
+            if (isFadedOut)
+                canvas.DOFade(1.0f, fadeTime).OnComplete(() => isFadedOut = false);
+        }
     }
 }

@@ -152,6 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508368411418842278}
+  - component: {fileID: 1001384006190106574}
   - component: {fileID: 1508368411418842200}
   - component: {fileID: 1508368411418842202}
   - component: {fileID: 1508368411418842201}
@@ -182,6 +183,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001384006190106574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508368411418842277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b987fc844ac63d245923feed39237527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &1508368411418842200
 Rigidbody2D:
   serializedVersion: 4
@@ -252,6 +265,7 @@ MonoBehaviour:
   driftInterpSpeed: 7
   driftTurnFactor: 6
   driftSlipFactor: 0.99
+  driftLock: 1
   boostChargeTime: 0.5
   boostStrength: 15
 --- !u!114 &1508368411418842203
@@ -267,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6105584905755267162
+  uniqueID: 3860395706830771850
   updateError: 1
   checkTime: 0.1
 --- !u!114 &1508368411418842204

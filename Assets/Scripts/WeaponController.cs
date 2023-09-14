@@ -9,6 +9,8 @@ public class WeaponController : MonoBehaviour
 
     private static WorldComponentReference wcr;
 
+    private WeaponProjectile currentWeapon;
+
     private void Awake()
     {
         if (wcr == null)
@@ -33,7 +35,51 @@ public class WeaponController : MonoBehaviour
 
     public void Shoot()
     {
+        RefreshCurrentWeapon();
+
         if (gameObject.activeInHierarchy)
-            GetComponentInChildren<WeaponProjectile>().Shoot();
+            currentWeapon.Shoot();
+    }
+
+    public int GetClipRemaining()
+    {
+        RefreshCurrentWeapon();
+
+        if (gameObject.activeInHierarchy)
+            return currentWeapon.GetCurrentClip();
+        return 0;
+    }
+
+    public int GetMaxClipSize()
+    {
+        RefreshCurrentWeapon();
+
+        if (gameObject.activeInHierarchy)
+            return currentWeapon.maxClipSize;
+        return 0;
+    }
+
+    public float GetReloadProgress()
+    {
+        RefreshCurrentWeapon();
+
+        if (gameObject.activeInHierarchy)
+            return currentWeapon.GetReloadProgress();
+        return 1;
+    }
+
+    public bool IsReloading()
+    {
+        RefreshCurrentWeapon();
+
+        if (gameObject.activeInHierarchy)
+            return currentWeapon.IsReloading();
+        return false;
+    }
+
+    private void RefreshCurrentWeapon()
+    {
+        if (!currentWeapon || !currentWeapon.isActiveAndEnabled)
+            currentWeapon = GetComponentInChildren<WeaponProjectile>();
     }
 }
