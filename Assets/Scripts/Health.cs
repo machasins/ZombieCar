@@ -75,4 +75,14 @@ public class Health : MonoBehaviour
 
         onHeal.Invoke();
     }
+
+    public float GetHealthPercentage()
+    {
+        return health / maxHealth;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
 }
