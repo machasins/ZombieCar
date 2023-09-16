@@ -13,6 +13,7 @@ public class SpeedDisplay : MonoBehaviour
 
     private Tweener rotate;
     private float angle;
+    private float lastAngle;
 
     private void Awake()
     {
@@ -25,7 +26,13 @@ public class SpeedDisplay : MonoBehaviour
     private void Update()
     {
         Rigidbody2D rb = wcr.player.GetComponent<Rigidbody2D>();
-        rotate.ChangeValues(angle, Mathf.Lerp(rotationLimits.x, rotationLimits.y, rb.velocity.magnitude / maximumPossibleSpeed), lerpTime);
+        float newAngle = Mathf.Lerp(rotationLimits.x, rotationLimits.y, rb.velocity.magnitude / maximumPossibleSpeed);
+
+        if (newAngle != lastAngle)
+        {
+            rotate.ChangeEndValue(newAngle, true).Restart();
+            lastAngle = newAngle;
+        }
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }

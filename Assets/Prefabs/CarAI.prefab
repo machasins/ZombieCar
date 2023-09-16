@@ -11029,10 +11029,11 @@ GameObject:
   - component: {fileID: 4943353694498508130}
   - component: {fileID: 4943353694498508133}
   - component: {fileID: 4943353694498508132}
+  - component: {fileID: 4943353694498508134}
   - component: {fileID: 4943353694498508135}
   - component: {fileID: 4943353694498508140}
-  - component: {fileID: 4943353694498508134}
   - component: {fileID: 4943353694498508143}
+  - component: {fileID: 5384873954521979328}
   m_Layer: 7
   m_Name: CarAI
   m_TagString: Untagged
@@ -11123,12 +11124,13 @@ MonoBehaviour:
   accelerationFactor: 45
   minDrag: 1
   maxDrag: 3
-  dragActivationSpeed: 3
+  dragInterpSpeed: 3
   turnFactor: 3.5
   slipFactor: 0.7
-  driftActivationSpeed: 5
+  driftInterpSpeed: 7
   driftTurnFactor: 6
   driftSlipFactor: 0.95
+  driftLock: 1
   boostChargeTime: 0.5
   boostStrength: 15
 --- !u!114 &4943353694498508130
@@ -11218,39 +11220,6 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
---- !u!114 &4943353694498508135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943353694498508056}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
---- !u!114 &4943353694498508140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943353694498508056}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e6c29e32504465faa943c537d8029b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  targets:
-  - {fileID: 4943353694303079072}
-  - {fileID: 4943353692785268138}
-  - {fileID: 4943353693275434976}
-  - {fileID: 4943353693885039182}
-  delay: 1
 --- !u!114 &4943353694498508134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11294,6 +11263,39 @@ MonoBehaviour:
   whenCloseToDestination: 0
   constrainInsideGraph: 0
   minDriftTime: 0.25
+--- !u!114 &4943353694498508135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943353694498508056}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  target: {fileID: 0}
+--- !u!114 &4943353694498508140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943353694498508056}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e6c29e32504465faa943c537d8029b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  targets:
+  - {fileID: 4943353694303079072}
+  - {fileID: 4943353692785268138}
+  - {fileID: 4943353693275434976}
+  - {fileID: 4943353693885039182}
+  delay: 1
 --- !u!114 &4943353694498508143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11306,9 +11308,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2621b2a73401c4db0cc7bea6913b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doPatrol: 1
-  patrolSpeed: 5
-  doFollow: 1
-  followSpeed: 0
-  followRadius: 5
-  followLostRadius: 20
+  passive: 2
+  passiveSpeed: 1
+  patrolPoints: []
+  wanderDistance: 10
+  delay: 3
+  spotRange: 20
+  rallyRange: 15
+  loseRange: 30
+  hostileSpeed: 1
+  doPursuit: 1
+  doCharge: 0
+  chargeDistance: 2
+  chargePower: 20
+  doFollow: 0
+  followDistance: 2
+  doFlank: 0
+  flankDistance: 2
+  doCircle: 0
+  circleRadius: 3.75
+  doHitNRun: 0
+  nearDistance: 2
+  nearTime: 3.5
+  farDistance: 10
+  farTime: 3.5
+  breakDistance: 0
+  doDodge: 0
+  percentLost: 0
+  doDistance: 1
+  doStalk: 0
+  doStyle: 0
+  doFormation: 0
+  leader: {fileID: 0}
+  formation: []
+--- !u!114 &5384873954521979328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943353694498508056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08e4cafc234cb04f92951ef322a4cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggressive: 0.5
+  intelligence: 0.5
+  patience: 0.5
+  skill: 0.5
+  predictive: 0.5
+  reckless: 0.5
+  persistent: 0.5

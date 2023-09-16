@@ -25,6 +25,7 @@ public class WeaponDisplay : MonoBehaviour
     private Tweener percentFill;
     private Image percentImage;
     private float percentFillAmount = 0.0f;
+    private float percentLast;
 
     private int currentShells;
     private float shellY;
@@ -47,6 +48,7 @@ public class WeaponDisplay : MonoBehaviour
 
         percentImage = percent.transform.GetChild(1).GetComponent<Image>();
         percentFill = DOTween.To(() => percentFillAmount, x => percentFillAmount = x, 1.0f, 1000).SetAutoKill(false);
+        percentLast = 1.0f;
     }
 
     private void Update()
@@ -98,7 +100,12 @@ public class WeaponDisplay : MonoBehaviour
         float per = (float)weaponController.GetClipRemaining() / weaponController.GetMaxClipSize();
         if (weaponController.IsReloading())
             per = weaponController.GetReloadProgress();
-        percentFill.ChangeValues(percentFillAmount, per, percentMoveTime);
+
+        if (percentLast != per)
+        {
+            percentFill.ChangeEndValue(per, true).Restart();
+            percentLast = per;
+        }
 
         percentImage.fillAmount = percentFillAmount;
     }

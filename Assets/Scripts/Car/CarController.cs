@@ -54,6 +54,12 @@ public class CarController : MonoBehaviour
         drift = slipFactor;
     }
 
+    private void Start()
+    {
+        accelerationFactor *= rb.mass;
+        boostStrength *= rb.mass;
+    }
+
     void FixedUpdate()
     {
         ApplyDrifting();

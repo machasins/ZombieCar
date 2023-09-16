@@ -23,6 +23,7 @@ public class DisplayHealth : MonoBehaviour
     private Health health;
 
     private Tweener recentDamage;
+    private float lastHealth;
 
     private void Awake()
     {
@@ -35,13 +36,13 @@ public class DisplayHealth : MonoBehaviour
         health.onHeal.AddListener(OnHealthChange);
 
         recentDamage = DOTween.To(() => healthBarRecentDamage.fillAmount, x => healthBarRecentDamage.fillAmount = x, healthBar.fillAmount, recentDamageTime).SetAutoKill(false);
+        lastHealth = healthBar.fillAmount;
 
         time = timeToFade;
     }
 
     private void Update()
     {
-        recentDamage.ChangeValues(healthBarRecentDamage.fillAmount, healthBar.fillAmount, recentDamageTime);
 
         if (doFade)
         {
@@ -49,6 +50,11 @@ public class DisplayHealth : MonoBehaviour
             if (time >= timeToFade && !isFadedOut)
                 canvas.DOFade(0.0f, fadeTime).OnComplete(() => isFadedOut = true);
         }
+
+        if (healthBar.fillAmount == lastHealth) return;
+
+        recentDamage.ChangeEndValue(healthBar.fillAmount, true).Restart();
+        lastHealth = healthBar.fillAmount;
     }
 
     private void OnHealthChange()

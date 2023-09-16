@@ -28,6 +28,12 @@ public class SnakeFollow : MonoBehaviour
 
     private Vector3 prevPosition;
 
+    private Tweener location;
+    private Tweener rotation;
+
+    private Vector3 prevLocation;
+    private Vector3 prevRotation;
+
     private void Awake()
     {
         if (!head)
@@ -48,6 +54,9 @@ public class SnakeFollow : MonoBehaviour
                 }
             };
         }
+
+        location = transform.DOMove(transform.position, 0.1f).SetAutoKill(false);
+        rotation = transform.DORotate(transform.rotation.eulerAngles, 0.1f).SetAutoKill(false);
     }
 
     private void Start()
@@ -106,7 +115,20 @@ public class SnakeFollow : MonoBehaviour
         }
 
         float t = (next.distance - followerDistance) / (next.distance - prev.distance);
-        transform.DOMove(Vector3.Lerp(next.position, prev.position, t), 0.1f);
-        transform.DORotate(Quaternion.Lerp(next.rotation, prev.rotation, t).eulerAngles, 0.1f);
+
+        Vector3 pos = Vector3.Lerp(next.position, prev.position, t);
+        Vector3 rot = Quaternion.Lerp(next.rotation, prev.rotation, t).eulerAngles;
+
+        if (pos != prevLocation)
+        {
+            location.ChangeEndValue(pos, true).Restart();
+            prevLocation = pos;
+        }
+
+        if (rot != prevRotation)
+        {
+            rotation.ChangeEndValue(rot, true).Restart();
+            prevRotation = rot;
+        }
     }
 }

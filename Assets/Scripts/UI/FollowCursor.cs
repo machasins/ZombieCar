@@ -10,10 +10,16 @@ public class FollowCursor : MonoBehaviour
     public float defaultZ = 0;
     public float followTime = 0.1f;
 
+    private Vector3 lastPosition;
+    private Tweener movement;
+
     private void Awake()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+
+        movement = transform.DOMove(Vector3.forward * defaultZ, followTime).SetAutoKill(false);
+        lastPosition = Vector3.forward * defaultZ;
     }
 
     private void Update()
@@ -24,6 +30,9 @@ public class FollowCursor : MonoBehaviour
         mousePos = mainCam.ScreenToWorldPoint(mousePos);
         mousePos.z = defaultZ;
 
-        transform.DOMove(mousePos, followTime);
+        if (lastPosition == mousePos) return;
+
+        movement.ChangeEndValue(mousePos, true).Restart();
+        lastPosition = mousePos;
     }
 }
