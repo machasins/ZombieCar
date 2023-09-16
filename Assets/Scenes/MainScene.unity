@@ -23764,16 +23764,14 @@ MonoBehaviour:
   followDistance: 2
   doFlank: 1
   flankDistance: 2
-  doCircle: 1
-  circleRadius: 3.75
   doHitNRun: 0
   nearDistance: 0
   nearTime: 0
   farDistance: 0
   farTime: 0
   breakDistance: 0
-  doDodge: 0
   percentLost: 0
+  doCircle: 1
   doDistance: 1
   doStalk: 1
   doStyle: 0
@@ -24043,16 +24041,14 @@ MonoBehaviour:
   followDistance: 2
   doFlank: 1
   flankDistance: 2
-  doCircle: 1
-  circleRadius: 3.75
   doHitNRun: 0
   nearDistance: 0
   nearTime: 0
   farDistance: 0
   farTime: 0
   breakDistance: 0
-  doDodge: 0
   percentLost: 0
+  doCircle: 1
   doDistance: 1
   doStalk: 1
   doStyle: 0
@@ -35883,7 +35879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652645758554481814, guid: ddde1b52964a09c4fb79247f9a0730d7, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 652645758813235990, guid: ddde1b52964a09c4fb79247f9a0730d7, type: 3}
       propertyPath: m_RootOrder
@@ -36990,7 +36986,7 @@ MonoBehaviour:
   driftInterpSpeed: 7
   driftTurnFactor: 6
   driftSlipFactor: 0.95
-  driftLock: 1
+  driftLock: 0
   boostChargeTime: 0.5
   boostStrength: 7
 --- !u!61 &2005816794791189557
@@ -37106,19 +37102,17 @@ MonoBehaviour:
   followDistance: 3.5
   doFlank: 0
   flankDistance: 2
-  doCircle: 1
-  circleRadius: 10
   doHitNRun: 0
   nearDistance: 2
   nearTime: 3.5
   farDistance: 10
   farTime: 3.5
   breakDistance: 10
-  doDodge: 0
   percentLost: 0
+  doCircle: 0
   doDistance: 0
   doStalk: 0
-  doStyle: 0
+  doStyle: 1
   doFormation: 0
   leader: {fileID: 0}
   formation: []
