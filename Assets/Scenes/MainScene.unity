@@ -36090,13 +36090,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e4cafc234cb04f92951ef322a4cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggressive: 0.5
-  intelligence: 0.5
-  patience: 0.5
-  skill: 0.5
-  predictive: 0.5
-  reckless: 0.5
-  persistent: 0.5
+  aggressive: 0.724
+  intelligence: 0.859
+  patience: 0.099
+  skill: 0.855
+  predictive: 0
+  reckless: 0.424
+  persistent: 0.593
 --- !u!1 &2005816793216353529
 GameObject:
   m_ObjectHideFlags: 0
@@ -37161,8 +37161,8 @@ MonoBehaviour:
   breakDistance: 10
   percentLost: 0
   doCircle: 0
-  doDistance: 0
-  doStalk: 0
+  doDistance: 1
+  doStalk: 1
   doStyle: 0
   doFormation: 0
   leader: {fileID: 0}
