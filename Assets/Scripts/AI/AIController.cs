@@ -1,5 +1,6 @@
 using Pathfinding;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class AIController : MonoBehaviour
     // [[Passive Settings]]
     [Tooltip("What action to take when not in combat")]
     public PassiveAction passive;
+        [Tooltip("How much time, minimum, to spend in the passive state")]
+        public float passiveTime = 5.0f;
         [Tooltip("Percent of max speed to use when passive")]
         [Range(0.0f, 1.0f)] public float passiveSpeed = 1.0f;
 
@@ -92,11 +95,15 @@ public class AIController : MonoBehaviour
         public List<Transform> formation;
 
     private static WorldComponentReference wcr;
+    private static AIWorldReference awr;
 
     private AIPath movement;
     private Health health;
+    private AITraits traits;
 
     private State state;
+    private float stateChangeTime = 0.0f;
+    private int previousBehaviorIndex = -1;
 
     private MonoBehaviour passiveBehavior;
     private AIPointSetter idle;
@@ -104,7 +111,9 @@ public class AIController : MonoBehaviour
     private Wander wander;
 
     private List<MonoBehaviour> hostileBehaviors = new();
-    private float breatheTime = 0.0f;
+    private List<float> hostileChances = new();
+    private float hostileTotalChance;
+    private float hostileTime;
     private AIDestinationSetter pursuit;
     private AICharge charge;
     private AIDestinationOffset follow;
@@ -112,6 +121,8 @@ public class AIController : MonoBehaviour
     private AIHitNRun hitNRun;
 
     private List<MonoBehaviour> breatheBehaviors = new();
+    private List<float> breatheChances = new();
+    private float breatheTotalChance;
     private AICircle circle;
     private AIHitNRun distance;
     private AIHitNRun stalk;
@@ -121,10 +132,14 @@ public class AIController : MonoBehaviour
     private void Start()
     {
         if (!wcr)
+        {
             wcr = FindObjectOfType<WorldComponentReference>();
+            awr = wcr.GetComponent<AIWorldReference>();
+        }
 
         movement = GetComponent<AIPath>();
         health = GetComponent<Health>();
+        traits = GetComponent<AITraits>();
 
         switch (passive)
         {
@@ -156,6 +171,7 @@ public class AIController : MonoBehaviour
             pursuit.target = wcr.player.transform;
 
             hostileBehaviors.Add(pursuit);
+            hostileChances.Add(GetChance("pursuit"));
             pursuit.enabled = false;
         }
 
@@ -167,6 +183,7 @@ public class AIController : MonoBehaviour
             charge.chargePower = chargePower;
 
             hostileBehaviors.Add(charge);
+            hostileChances.Add(GetChance("charge"));
             charge.enabled = false;
         }
 
@@ -179,6 +196,7 @@ public class AIController : MonoBehaviour
             follow.canMirror = true;
 
             hostileBehaviors.Add(follow);
+            hostileChances.Add(GetChance("follow"));
             follow.enabled = false;
         }
 
@@ -191,6 +209,7 @@ public class AIController : MonoBehaviour
             flank.canMirror = false;
 
             hostileBehaviors.Add(flank);
+            hostileChances.Add(GetChance("flank"));
             flank.enabled = false;
         }
 
@@ -204,6 +223,7 @@ public class AIController : MonoBehaviour
             hitNRun.farTime = farTime;
 
             hostileBehaviors.Add(hitNRun);
+            hostileChances.Add(GetChance("hitNRun"));
             hitNRun.enabled = false;
         }
 
@@ -215,6 +235,7 @@ public class AIController : MonoBehaviour
             circle.SetupPoints();
 
             breatheBehaviors.Add(circle);
+            breatheChances.Add(GetChance("circle"));
             circle.enabled = false;
         }
 
@@ -226,6 +247,7 @@ public class AIController : MonoBehaviour
             distance.nearTime = Mathf.Infinity;
 
             breatheBehaviors.Add(distance);
+            breatheChances.Add(GetChance("distance"));
             distance.enabled = false;
         }
 
@@ -237,6 +259,7 @@ public class AIController : MonoBehaviour
             stalk.nearTime = Mathf.Infinity;
 
             breatheBehaviors.Add(stalk);
+            breatheChances.Add(GetChance("stalk"));
             stalk.enabled = false;
         }
 
@@ -248,6 +271,7 @@ public class AIController : MonoBehaviour
             style.nearTime = Mathf.Infinity;
 
             breatheBehaviors.Add(style);
+            breatheChances.Add(GetChance("style"));
             style.enabled = false;
         }
 
@@ -257,7 +281,12 @@ public class AIController : MonoBehaviour
         }
 
         if (loseRange < spotRange) loseRange = spotRange;
+
+        hostileTotalChance = hostileChances.Sum();
+        breatheTotalChance = breatheChances.Sum();
+
         state = State.passive;
+        stateChangeTime = Time.time + passiveTime;
     }
 
     private void FixedUpdate()
@@ -267,53 +296,80 @@ public class AIController : MonoBehaviour
         switch (state)
         {
             case State.passive:
-                SwitchHostile(distance, spotRange, ref breatheTime);
+                SwitchHostile(distance, spotRange, ref stateChangeTime, ref hostileTime);
                 break;
             case State.hostile:
-                SwapHostile(ref breatheTime, hostileBehaviors, breatheBehaviors);
-                SwitchPassive(distance, loseRange, hostileBehaviors);
+                ChangeBehavior(ref hostileTime, hostileBehaviors, hostileChances, hostileTotalChance);
+                SwapHostile(ref stateChangeTime, hostileBehaviors, breatheBehaviors, breatheChances, breatheTotalChance);
+                SwitchPassive(distance, loseRange, ref stateChangeTime, hostileBehaviors);
                 break;
             case State.breathe:
-                SwapHostile(ref breatheTime, breatheBehaviors, hostileBehaviors);
-                SwitchPassive(distance, loseRange, breatheBehaviors);
+                ChangeBehavior(ref hostileTime, breatheBehaviors, breatheChances, breatheTotalChance);
+                SwapHostile(ref stateChangeTime, breatheBehaviors, hostileBehaviors, hostileChances, hostileTotalChance);
+                SwitchPassive(distance, loseRange, ref stateChangeTime, breatheBehaviors);
                 break;
         }
     }
 
-    private void SwitchHostile(float distance, float range, ref float time)
+    private float GetChance(string variablePrefix)
     {
-        if (distance <= range)
+        int baseChance = (int) typeof(AIWorldReference).GetField(variablePrefix + "Likelyhood").GetValue(awr);
+        float intelMult = (float) typeof(AIWorldReference).GetField(variablePrefix + "IntelMult").GetValue(awr);
+        float skillMult = (float) typeof(AIWorldReference).GetField(variablePrefix + "SkillMult").GetValue(awr);
+
+        float intel = (intelMult < 0.0f) ? 1.0f - traits.intelligence : traits.intelligence;
+        float skill = (skillMult < 0.0f) ? 1.0f - traits.skill : traits.skill;
+
+        intelMult = Mathf.Abs(intelMult);
+        skillMult = Mathf.Abs(skillMult);
+
+        return baseChance + baseChance * intelMult * intel + baseChance * skillMult * skill;
+    }
+
+    private void SwitchHostile(float distance, float range, ref float time, ref float behaviorTime)
+    {
+        if (Time.time >= time && distance <= range)
         {
             passiveBehavior.enabled = false;
-            if (hostileBehaviors.Count <= 0)
-            {
-                state = State.breathe;
-                breatheBehaviors[Random.Range(0, breatheBehaviors.Count)].enabled = true;
-            }
-            else
+            if (hostileBehaviors.Count > 0)
             {
                 state = State.hostile;
-                hostileBehaviors[Random.Range(0, hostileBehaviors.Count)].enabled = true;
-            }
+                previousBehaviorIndex = GetNewBehavior(hostileBehaviors, hostileChances, hostileTotalChance);
 
-            time = Time.time + 20.0f;
+                behaviorTime = Time.time + awr.minBehaviorSwitchTime + awr.maxBehaviorSwitchVariance * ((state == State.hostile) ? traits.aggressive : traits.patience);
+            }
+            else if (breatheBehaviors.Count > 0)
+            {
+                state = State.breathe;
+                previousBehaviorIndex = GetNewBehavior(breatheBehaviors, breatheChances, breatheTotalChance);
+
+                behaviorTime = Time.time + awr.minBehaviorSwitchTime + awr.maxBehaviorSwitchVariance * ((state == State.hostile) ? traits.aggressive : traits.patience);
+            }
+            else
+                previousBehaviorIndex = -1;
+
+            time = Time.time + awr.minSwitchTime + awr.maxSwitchVariance * ((state == State.hostile) ? traits.patience : traits.aggressive);
 
             Debug.Log("Current State is " + state.ToString());
         }
     }
 
-    private void SwitchPassive(float distance, float range, List<MonoBehaviour> currentStateBehaviors)
+    private void SwitchPassive(float distance, float range, ref float time, List<MonoBehaviour> currentStateBehaviors)
     {
         if (distance >= range)
         {
             foreach (var m in currentStateBehaviors)
                 m.enabled = false;
-            passiveBehavior.enabled = true;
+
             state = State.passive;
+            passiveBehavior.enabled = true;
+
+            time = Time.time + passiveTime;
+            previousBehaviorIndex = -1;
         }
     }
 
-    private void SwapHostile(ref float time, List<MonoBehaviour> currentStateBehaviors, List<MonoBehaviour> swapStateBehaviors)
+    private void SwapHostile(ref float time, List<MonoBehaviour> currentStateBehaviors, List<MonoBehaviour> swapStateBehaviors, List<float> swapStateChances, float swapStateTotalChances)
     {
         if (Time.time >= time)
         {
@@ -323,17 +379,50 @@ public class AIController : MonoBehaviour
                 m.enabled = false;
 
             if (swapStateBehaviors.Count <= 0)
-            {
-                SwapHostile(ref time, swapStateBehaviors, currentStateBehaviors);
                 return;
-            }
 
-            swapStateBehaviors[Random.Range(0, swapStateBehaviors.Count)].enabled = true;
+            previousBehaviorIndex = GetNewBehavior(swapStateBehaviors, swapStateChances, swapStateTotalChances);
 
-            time = Time.time + 20.0f;
+            time = Time.time + awr.minSwitchTime + awr.maxSwitchVariance * ((state == State.hostile) ? traits.aggressive : traits.patience);
 
             Debug.Log("Current State is " + state.ToString());
         }
+    }
+
+    private void ChangeBehavior(ref float time, List<MonoBehaviour> currentStateBehaviors, List<float> currentStateChances, float currentStateTotalChances)
+    {
+        if (Time.time >= time)
+        {
+            previousBehaviorIndex = GetNewBehavior(currentStateBehaviors, currentStateChances, currentStateTotalChances);
+
+            time = Time.time + awr.minBehaviorSwitchTime + awr.maxBehaviorSwitchVariance * ((state == State.hostile) ? traits.aggressive : traits.patience);
+        }
+    }
+
+    private int GetNewBehavior(List<MonoBehaviour> stateBehaviors, List<float> behaviorChance, float behaviorTotalChance)
+    {
+        if (stateBehaviors.Count <= 0)
+            return previousBehaviorIndex;
+
+        if (previousBehaviorIndex >= 0 && Random.value < traits.predictive)
+        {
+            stateBehaviors[previousBehaviorIndex].enabled = true;
+            return previousBehaviorIndex;
+        }
+
+        float chance = Random.Range(0, behaviorTotalChance);
+        for (int i = 0; i < behaviorChance.Count; ++i)
+        {
+            chance -= behaviorChance[i];
+            if (chance < 0)
+            {
+                stateBehaviors[i].enabled = true;
+                return i;
+            }
+        }
+        stateBehaviors[behaviorChance.Count - 1].enabled = true;
+
+        return behaviorChance.Count - 1;
     }
 }
 
@@ -342,6 +431,7 @@ public class AIControllerEditor : Editor
 {
     SerializedProperty passiveType;
 
+    SerializedProperty passiveTime;
     SerializedProperty passiveSpeed;
     SerializedProperty passivePatrolPoints;
     SerializedProperty passiveDelay;
@@ -388,6 +478,7 @@ public class AIControllerEditor : Editor
     private void Awake()
     {
         passiveType = serializedObject.FindProperty("passive");
+        passiveTime = serializedObject.FindProperty("passiveTime");
         passiveSpeed = serializedObject.FindProperty("passiveSpeed");
 
         passivePatrolPoints = serializedObject.FindProperty("patrolPoints");
@@ -443,9 +534,13 @@ public class AIControllerEditor : Editor
         switch (passiveType.enumValueFlag)
         {
             case (int)AIController.PassiveAction.idle:
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(passiveTime);
+                EditorGUI.indentLevel--;
                 break;
             case (int)AIController.PassiveAction.patrol:
                 EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(passiveTime);
                 EditorGUILayout.PropertyField(passiveSpeed);
                 EditorGUILayout.PropertyField(passivePatrolPoints);
                 EditorGUILayout.PropertyField(passiveDelay);
@@ -453,6 +548,7 @@ public class AIControllerEditor : Editor
                 break;
             case (int)AIController.PassiveAction.wander:
                 EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(passiveTime);
                 EditorGUILayout.PropertyField(passiveSpeed);
                 EditorGUILayout.PropertyField(passiveWanderDistance);
                 EditorGUILayout.PropertyField(passiveDelay);

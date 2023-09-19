@@ -23748,6 +23748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passive: 0
+  passiveTime: 5
   passiveSpeed: 0
   patrolPoints: []
   wanderDistance: 10
@@ -24025,6 +24026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passive: 0
+  passiveTime: 5
   passiveSpeed: 0
   patrolPoints: []
   wanderDistance: 10
@@ -35971,6 +35973,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddde1b52964a09c4fb79247f9a0730d7, type: 3}
+--- !u!1 &652645759183231468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 652645758813235991, guid: ddde1b52964a09c4fb79247f9a0730d7, type: 3}
+  m_PrefabInstance: {fileID: 652645759183231467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &652645759183231469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652645759183231468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5780b1bd8cbd9fe4e980f62c3d1f1287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSwitchTime: 20
+  maxSwitchVariance: 10
+  minBehaviorSwitchTime: 5
+  maxBehaviorSwitchVariance: 5
+  pursuitLikelyhood: 2
+  chargeLikelyhood: 1
+  followLikelyhood: 2
+  flankLikelyhood: 2
+  hitNRunLikelyhood: 1
+  circleLikelyhood: 2
+  distanceLikelyhood: 2
+  stalkLikelyhood: 1
+  styleLikelyhood: 3
+  pursuitIntelMult: 0
+  chargeIntelMult: 0.3
+  followIntelMult: -0.1
+  flankIntelMult: 0
+  hitNRunIntelMult: 0.3
+  circleIntelMult: 0
+  distanceIntelMult: -0.1
+  stalkIntelMult: 0.2
+  styleIntelMult: -0.3
+  pursuitSkillMult: 0
+  chargeSkillMult: 0.2
+  followSkillMult: -0.3
+  flankSkillMult: 0.1
+  hitNRunSkillMult: 0
+  circleSkillMult: 0.1
+  distanceSkillMult: -0.3
+  stalkSkillMult: -0.3
+  styleSkillMult: 0.3
 --- !u!1001 &733146077584134565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37086,6 +37136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passive: 0
+  passiveTime: 5
   passiveSpeed: 1
   patrolPoints: []
   wanderDistance: 20
@@ -37094,15 +37145,15 @@ MonoBehaviour:
   rallyRange: 15
   loseRange: 30
   hostileSpeed: 1
-  doPursuit: 0
-  doCharge: 0
+  doPursuit: 1
+  doCharge: 1
   chargeDistance: 7.5
   chargePower: 20
-  doFollow: 0
+  doFollow: 1
   followDistance: 3.5
-  doFlank: 0
+  doFlank: 1
   flankDistance: 2
-  doHitNRun: 0
+  doHitNRun: 1
   nearDistance: 2
   nearTime: 3.5
   farDistance: 10
@@ -37112,7 +37163,7 @@ MonoBehaviour:
   doCircle: 0
   doDistance: 0
   doStalk: 0
-  doStyle: 1
+  doStyle: 0
   doFormation: 0
   leader: {fileID: 0}
   formation: []
