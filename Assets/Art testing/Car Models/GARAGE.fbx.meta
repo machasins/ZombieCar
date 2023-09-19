@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: door.png
-    second: {fileID: 2100000, guid: 8db953b9a1789824087e63bd85b14cc6, type: 2}
+    second: {fileID: 2100000, guid: 580faed1a266e2b439a55bb56de6f30a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
