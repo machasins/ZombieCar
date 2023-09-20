@@ -22,16 +22,22 @@ public class AITraits : MonoBehaviour
     /*
      * - Agressive - 
      * How commonly the enemy changes up it's attacks, how long it stays in the attack mode.
+     * 
      * - Intelligence -
      * Determines requirements for certain maneuvers, chance of leaving at low health, prediction aiming
+     * 
      * - Patience -
      * How long the enemy stays in the beathe mode
+     * 
      * - Skill -
      * Speed of aiming mechanism, determines requirements for certain maneuvers
+     * 
      * - Predictive -
      * How commonly the same move is used twice in a row
+     * 
      * - Reckless -
      * Speed of car, acceleration of car, drifting threshold
+     * 
      * - Persistent -
      * Chance of the enemy to give up attacking after a long time or distance
      */
