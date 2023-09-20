@@ -3,7 +3,22 @@ guid: f58fc9cd808b6e4409809a357a6289eb
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fence_Rim.png
+    second: {fileID: 2100000, guid: 850ff1f126f09d043b7561e2f72d7fbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fence_Wire.png
+    second: {fileID: 2100000, guid: 5cb96e55f66d13641adaf5ea3f84847e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fence_face.png
+    second: {fileID: 2100000, guid: 81535c9aefa05a64082b9add4b85be55, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
