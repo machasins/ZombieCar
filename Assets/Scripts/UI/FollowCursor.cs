@@ -21,6 +21,14 @@ public class FollowCursor : MonoBehaviour
         movement = transform.DOMove(Vector3.forward * defaultZ, followTime).SetAutoKill(false);
         lastPosition = Vector3.forward * defaultZ;
     }
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+    }
 
     private void Update()
     {

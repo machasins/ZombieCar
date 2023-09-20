@@ -216,14 +216,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4288503793870356890, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934313238906012829, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
-      propertyPath: m_Name
-      value: FrameSelect
-      objectReference: {fileID: 0}
     - target: {fileID: 6666871409004103139, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: defaultZ
       value: -5
