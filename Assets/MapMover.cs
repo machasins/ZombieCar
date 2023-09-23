@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IScrollHandler
 {
@@ -15,6 +16,7 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public float zoomMin = 0.75f;
     public float zoomMax = 4.0f;
     public float zoomAmount = 0.1f;
+    public Slider zoomSlider;
 
     private RectTransform t;
 
@@ -27,6 +29,7 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private float zoomLevel;
     private float zoomLevelPrev;
+    private float zoomSliderPrev;
 
     private void Awake()
     {
@@ -51,10 +54,16 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             prevPosition = targetPosition;
         }
 
+        if (zoomSlider.value != zoomSliderPrev)
+            OnScrollBar();
+
         if (zoomLevel != zoomLevelPrev)
         {
             zoom.ChangeEndValue(zoomLevel * Vector3.one, true).Restart(true);
             zoomLevelPrev = zoomLevel;
+
+            zoomSlider.value = (zoomLevel - zoomMin) / (zoomMax - zoomMin);
+            zoomSliderPrev = zoomSlider.value;
         }
     }
 
@@ -67,6 +76,9 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         Vector2 point = GetPoint(data);
 
+        if (point == Vector2.zero)
+            return;
+
         targetPosition += (Vector3)(point - prevCursorPosition);
 
         targetPosition = new(
@@ -75,13 +87,12 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             targetPosition.z
         );
 
-        Debug.Log(targetPosition);
+        Debug.Log(point);
         prevCursorPosition = point;
     }
 
     public void OnEndDrag(PointerEventData data)
     {
-
     }
 
     public void OnScroll(PointerEventData data)
@@ -91,6 +102,16 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         zoomLevel = Mathf.Clamp(zoomLevel + scroll * zoomAmount, zoomMin, zoomMax);
 
         SetPivotInWorldSpace(t, GetPoint(data));
+    }
+
+    public void OnScrollBar()
+    {
+        if (t)
+        {
+            zoomLevel = Mathf.Lerp(zoomMin, zoomMax, zoomSlider.value);
+
+            SetPivotInWorldSpace(t, t.parent.position);
+        }
     }
 
     public Vector2 GetPoint(PointerEventData data)
@@ -111,11 +132,16 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             (pivot.x - source.rect.xMin) / source.rect.width,
             (pivot.y - source.rect.yMin) / source.rect.height);
 
+        SetPivot(source, pivot2);
+    }
+
+    public void SetPivot(RectTransform source, Vector2 pivot)
+    {
         // Now move the pivot, keeping and restoring the position which is based on it.
-        Vector2 offset = pivot2 - source.pivot;
+        Vector2 offset = pivot - source.pivot;
         offset.Scale(source.rect.size);
         Vector3 worldPos = source.position + source.TransformVector(offset);
-        source.pivot = pivot2;
+        source.pivot = pivot;
         source.position = worldPos;
         targetPosition = worldPos;
     }

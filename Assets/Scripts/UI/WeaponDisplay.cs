@@ -24,7 +24,6 @@ public class WeaponDisplay : MonoBehaviour
 
     private Tweener percentFill;
     private Image percentImage;
-    private float percentFillAmount = 0.0f;
     private float percentLast;
 
     private int currentShells;
@@ -47,7 +46,7 @@ public class WeaponDisplay : MonoBehaviour
         currentShells = maxShells;
 
         percentImage = percent.transform.GetChild(1).GetComponent<Image>();
-        percentFill = DOTween.To(() => percentFillAmount, x => percentFillAmount = x, 1.0f, 1000).SetAutoKill(false);
+        percentFill = percentImage.DOFillAmount(1.0f, percentMoveTime).SetAutoKill(false);
         percentLast = 1.0f;
     }
 
@@ -106,7 +105,5 @@ public class WeaponDisplay : MonoBehaviour
             percentFill.ChangeEndValue(per, true).Restart();
             percentLast = per;
         }
-
-        percentImage.fillAmount = percentFillAmount;
     }
 }
