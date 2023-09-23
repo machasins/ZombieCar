@@ -167,6 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652645758813235990}
   - component: {fileID: 652645758813235989}
+  - component: {fileID: 652645759183231469}
   m_Layer: 0
   m_Name: LevelLogic
   m_TagString: Untagged
@@ -212,6 +213,49 @@ MonoBehaviour:
   upgradeMenu: {fileID: 1055672218471534129}
   weaponFireInput: {fileID: 1120369429361536294, guid: 6550009cb0bcc1b4caaff1020a38fcc6, type: 3}
   interactInput: {fileID: -6710946641585865500, guid: 6550009cb0bcc1b4caaff1020a38fcc6, type: 3}
+--- !u!114 &652645759183231469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652645758813235991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5780b1bd8cbd9fe4e980f62c3d1f1287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSwitchTime: 20
+  maxSwitchVariance: 10
+  minBehaviorSwitchTime: 5
+  maxBehaviorSwitchVariance: 5
+  pursuitLikelyhood: 2
+  chargeLikelyhood: 1
+  followLikelyhood: 2
+  flankLikelyhood: 2
+  hitNRunLikelyhood: 1
+  circleLikelyhood: 2
+  distanceLikelyhood: 2
+  stalkLikelyhood: 1
+  styleLikelyhood: 3
+  pursuitIntelMult: 0
+  chargeIntelMult: 0.3
+  followIntelMult: -0.1
+  flankIntelMult: 0
+  hitNRunIntelMult: 0.3
+  circleIntelMult: 0
+  distanceIntelMult: -0.1
+  stalkIntelMult: 0.2
+  styleIntelMult: -0.3
+  pursuitSkillMult: 0
+  chargeSkillMult: 0.2
+  followSkillMult: -0.3
+  flankSkillMult: 0.1
+  hitNRunSkillMult: 0
+  circleSkillMult: 0.1
+  distanceSkillMult: -0.3
+  stalkSkillMult: -0.3
+  styleSkillMult: 0.3
 --- !u!1001 &652645759528722778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,6 +395,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 652645758813235990}
     m_Modifications:
+    - target: {fileID: 267784047225401681, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 267784047225401681, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: minSpeed
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 267784047225401681, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: minDamage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 267784047225401681, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: damageAmount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 267784047225401681, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: damageCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508368411418842200, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1508368411418842203, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
       propertyPath: uniqueID
       value: 5460808888848531159
@@ -403,10 +471,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1508368412276806246, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: reloadDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1508368413046196759, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 4444896523994509045}
+    - target: {fileID: 1821136412909761521, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821136412909761521, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: minSpeed
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821136412909761521, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: damageCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497157885247822568, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
+      propertyPath: maxClipSize
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01597db99b253e04da4bdf4f9fc18750, type: 3}
 --- !u!114 &652645758554481770 stripped
@@ -460,6 +548,18 @@ PrefabInstance:
     - target: {fileID: 2796818371194080343, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003077837801058285, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
+      propertyPath: cursorPositionMaxDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003077837801058285, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
+      propertyPath: cursorPositionInfluenceScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003077837801058285, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
+      propertyPath: playerVelocityInfluenceScale
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4639438995756687132, guid: fdc39fddb301457479a15836e18e0b5e, type: 3}
       propertyPath: lerpTime

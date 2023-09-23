@@ -41,7 +41,7 @@ public class AIWorldReference : MonoBehaviour
     public float stalkIntelMult =  0.2f;
     public float styleIntelMult = -0.3f;
 
-    [Header("Percent of the base chance to be added when Skill is high.")]
+    [Header("Percent of the base chance to be added when Skill is high. \n Negative values indicate that it is more likely the less Skilled the AI is.")]
     public float pursuitSkillMult =  0.0f;
     public float chargeSkillMult =  0.2f;
     public float followSkillMult = -0.3f;

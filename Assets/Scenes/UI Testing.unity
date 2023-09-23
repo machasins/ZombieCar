@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3196771524866355482, guid: 30f49aaa2c6022a44bf5b493c5d10696, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5753786528883405512, guid: 30f49aaa2c6022a44bf5b493c5d10696, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -255,15 +259,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8580645945609689771, guid: 30f49aaa2c6022a44bf5b493c5d10696, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8580645945609689771, guid: 30f49aaa2c6022a44bf5b493c5d10696, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8580645945609689771, guid: 30f49aaa2c6022a44bf5b493c5d10696, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30f49aaa2c6022a44bf5b493c5d10696, type: 3}
@@ -303,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1680008216
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -380,7 +384,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 151898890124390359, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1654345158889921280, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_Name
@@ -436,27 +440,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1654345159409890983, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4644561628560363015, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5154265322962548755, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072283677404748900, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6141884730650293324, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6666871409004103139, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: defaultZ
       value: -5
       objectReference: {fileID: 0}
-    - target: {fileID: 9114239056401794119, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
+    - target: {fileID: 6688762835615313831, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481907867174235477, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481907867174235477, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481907867174235477, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114239056401794119, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c98fb651ac53e904b9d0a76ba56ee2af, type: 3}

@@ -18,8 +18,8 @@ public class FollowCursor : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
 
-        movement = transform.DOMove(Vector3.forward * defaultZ, followTime).SetAutoKill(false);
-        lastPosition = Vector3.forward * defaultZ;
+        //movement = transform.DOMove(Vector3.forward * defaultZ, followTime).SetAutoKill(false);
+        //lastPosition = Vector3.forward * defaultZ;
     }
     void OnApplicationFocus(bool hasFocus)
     {
@@ -38,9 +38,11 @@ public class FollowCursor : MonoBehaviour
         mousePos = mainCam.ScreenToWorldPoint(mousePos);
         mousePos.z = defaultZ;
 
-        if (lastPosition == mousePos) return;
+        transform.position = mousePos;
 
-        movement.ChangeEndValue(mousePos, true).Restart();
-        lastPosition = mousePos;
+        //if (lastPosition == mousePos) return;
+
+        //movement.ChangeEndValue(mousePos, true).Restart();
+        //lastPosition = mousePos;
     }
 }
