@@ -35,21 +35,24 @@ public class MissionObjectiveDisplay : MonoBehaviour
 
     private void Update()
     {
-        Vector3 missionPosition = missionTracker.GetMissionPosition() + Vector3.up * verticalOffset;
-        Vector2 camPos = wcr.cameraPosition.transform.position;
+        if (missionTracker.IsMissionActive())
+        {
+            Vector3 missionPosition = missionTracker.GetMissionPosition() + Vector3.up * verticalOffset;
+            Vector2 camPos = wcr.cameraPosition.transform.position;
 
-        Vector2 pos = new(missionPosition.x, missionPosition.y);
+            Vector2 pos = new(missionPosition.x, missionPosition.y);
 
-        //if (screenPos.x > screenBounds.x || screenPos.y > screenBounds.y || screenPos.x < screenBoundsOffset.x || screenPos.y < screenBoundsOffset.y)
+            //if (screenPos.x > screenBounds.x || screenPos.y > screenBounds.y || screenPos.x < screenBoundsOffset.x || screenPos.y < screenBoundsOffset.y)
             pos = new Vector2(Mathf.Clamp(pos.x, camPos.x - outOfViewBounds.x, camPos.x + outOfViewBounds.x), Mathf.Clamp(pos.y, camPos.y - outOfViewBounds.y, camPos.y + outOfViewBounds.y));
 
-        t.position = pos;
+            t.position = pos;
 
-        //if (pos != lastPosition)
-        //{
+            //if (pos != lastPosition)
+            //{
             //movement.ChangeEndValue((Vector3)pos, true).Restart();
             //lastPosition = pos;
-        //}
+            //}
+        }
 
         marker.color = (missionTracker.IsMissionActive()) ? Color.white : Color.clear;
     }

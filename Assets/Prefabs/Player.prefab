@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 5821451485123524959}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11284,7 +11284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0885cf93908b454d8b39b0d03720b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topBone: {fileID: 0}
   maximumRadius: 0.04
 --- !u!4 &871597073233026274 stripped
 Transform:
@@ -11509,7 +11508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0885cf93908b454d8b39b0d03720b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topBone: {fileID: 0}
   maximumRadius: 0.04
 --- !u!1001 &2868766867700127979
 PrefabInstance:
@@ -11630,7 +11628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0885cf93908b454d8b39b0d03720b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topBone: {fileID: 0}
   maximumRadius: 0.04
 --- !u!1001 &3181406226204109094
 PrefabInstance:

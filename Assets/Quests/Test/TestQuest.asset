@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8586332349995693073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5118f258e43509745830ee9624570506, type: 3}
+  m_Name: DefeatEnemyQuest
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 67e9f5ae-dd9b-4385-90d1-b3fe38054941
+  progressionPoints: []
+  lastCompleted: -1
+--- !u!114 &-7812028333475687941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: CollectItemQuest_2|FinishTalking
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 90e7e11e-ed61-4103-aef1-8a0b108a6e28
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies:
+  - {fileID: 11400000, guid: 111ea955c0de33646a8497edc5a6fd61, type: 2}
+--- !u!114 &-2381906780014606447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5118f258e43509745830ee9624570506, type: 3}
+  m_Name: GoToLocationQuest
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 3bc330df-2caa-4a50-82b9-e2f409592647
+  progressionPoints: []
+  lastCompleted: -1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b8b251ddb545645ab6afbfb3dbdf55, type: 3}
+  m_Name: TestQuest
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 93e6eb2704415624d983f5031d32945a
+  quests:
+  - {fileID: 3117663969078902577}
+  - {fileID: -8586332349995693073}
+  - {fileID: -2381906780014606447}
+  progressionPoints: []
+  dependencies: []
+--- !u!114 &3117663969078902577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5118f258e43509745830ee9624570506, type: 3}
+  m_Name: CollectItemQuest
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 343aa47c-b62d-492e-aa21-d671fa635ba5
+  progressionPoints:
+  - {fileID: 7983990675045944552}
+  - {fileID: 3389867950388075750}
+  - {fileID: -7812028333475687941}
+  lastCompleted: -1
+--- !u!114 &3389867950388075750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: CollectItemQuest_1|CollectItem
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 5843272c-a8b9-4508-aaba-f92c23a6509a
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies:
+  - {fileID: 11400000, guid: bda8090566d779843bc43d7f999d2036, type: 2}
+--- !u!114 &7983990675045944552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: CollectItemQuest_0|StartTalking
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 9cd7546c-ba36-4341-8df7-58907946f72b
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies: []

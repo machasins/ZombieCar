@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 652645758813235990}
   - component: {fileID: 652645758813235989}
   - component: {fileID: 652645759183231469}
+  - component: {fileID: 7528597188796169942}
   m_Layer: 0
   m_Name: LevelLogic
   m_TagString: Untagged
@@ -256,6 +257,19 @@ MonoBehaviour:
   distanceSkillMult: -0.3
   stalkSkillMult: -0.3
   styleSkillMult: 0.3
+--- !u!114 &7528597188796169942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652645758813235991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3d1dda0576db24aa2838c218c76a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingObjective: {fileID: 0}
 --- !u!1001 &652645759528722778
 PrefabInstance:
   m_ObjectHideFlags: 0

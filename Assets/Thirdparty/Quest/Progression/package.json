@@ -1,0 +1,23 @@
+{
+    "name": "com.potesta.questzip",
+    "author": "Douglas Potesta",
+    "displayName": "Quest Zip",
+    "version": "1.0.0",
+    "unity": "2017.3",
+    "keywords": [
+        "unity",
+        "serializing",
+        "quest",
+        "progression",
+        "save",
+        "load"
+    ],
+    "description": "Progression system for saving and loading. Designed to be quest like. Starter framework.",
+    "samples": [
+        {
+            "displayName": "Demo",
+            "description": "Content that shows how to use the system.",
+            "path": "~Samples/Examples"
+        }
+    ]
+}

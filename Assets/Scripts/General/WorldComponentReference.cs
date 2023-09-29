@@ -10,6 +10,9 @@ public class WorldComponentReference : MonoBehaviour
     public GameObject cameraPosition;
     public GameObject upgradeMenu;
 
+    public GameObject dialogueDisplay;
+    public GameObject worldDialogueDisplay;
+
     public InputActionReference weaponFireInput;
     public InputActionReference interactInput;
 

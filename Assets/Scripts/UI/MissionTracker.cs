@@ -33,7 +33,7 @@ public class MissionTracker : MonoBehaviour
     {
         missionObjective = target;
         useTransform = true;
-        isActiveMission = true;
+        isActiveMission = target != null;
     }
 
     public void SetMissionObjective(Vector3 target)
