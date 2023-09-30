@@ -1,40 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Progression;
+using System.Security.Cryptography.X509Certificates;
+using UnityEngine.InputSystem.XR;
 
 public class DialogueController : MonoBehaviour
 {
     public TextAsset dialogueAsset;
+    public QuestAsset questAsset;
 
-    private Dictionary<string, DialogueState> states;
-    private DialogueState currentState;
+    private static WorldComponentReference wcr;
+
+    private bool isInteractingWithPlayer = false;
 
     private void Awake()
     {
-        DialogueState[] possibleStates = GetComponents<DialogueState>();
+        if (!wcr)
+            wcr = FindObjectOfType<WorldComponentReference>();
+    }
 
-        foreach (DialogueState s in possibleStates)
-        {
-            states.Add(s.stateName, s);
-            s.enabled = false;
-        }
+    private void Update()
+    {
+        if (isInteractingWithPlayer && wcr.interactInput.action.WasPressedThisFrame())
+            StartDialogue();
+    }
 
-        if (!states.TryGetValue("", out currentState))
-            currentState = possibleStates[0];
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            isInteractingWithPlayer = true;
+    }
 
-        currentState.enabled = true;
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            isInteractingWithPlayer = false;
     }
 
     public void StartDialogue()
     {
-        currentState.StartDialogue();
-    }
-
-    public void ChangeState(string stateName)
-    {
-        currentState.enabled = false;
-
-        currentState = states[stateName];
-        currentState.enabled = true;
+        wcr.dialogueDisplay.GetComponent<DialogueParser>().StartDialogue(dialogueAsset, questAsset);
     }
 }

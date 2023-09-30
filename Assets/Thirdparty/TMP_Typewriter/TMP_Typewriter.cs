@@ -51,7 +51,7 @@ namespace KoganeUnityLib
 		/// <param name="text">表示するテキスト ( リッチテキスト対応 )</param>
 		/// <param name="speed">表示する速さ ( speed == 1 の場合 1 文字の表示に 1 秒、speed == 2 の場合 0.5 秒かかる )</param>
 		/// <param name="onComplete">演出完了時に呼び出されるコールバック</param>
-		public void Play( string text, float speed, Action onComplete )
+		public void Play( string text, float speed, Action onComplete, bool useUnscaledTime = false)
 		{
 			m_textUI.text = text;
 			m_onComplete = onComplete;
@@ -70,7 +70,8 @@ namespace KoganeUnityLib
 				.To( value => OnUpdate( value ), 0, 1, duration )
 				.SetEase( Ease.Linear )
 				.OnComplete( () => OnComplete() )
-			;
+				.SetUpdate( useUnscaledTime )
+            ;
 		}
 
 		/// <summary>
@@ -104,6 +105,13 @@ namespace KoganeUnityLib
 		public void Resume()
 		{
 			m_tween?.Play();
+		}
+
+		public bool IsActive()
+		{
+			if (m_tween != null)
+				return m_tween.IsActive();
+			return false;
 		}
 
 		/// <summary>

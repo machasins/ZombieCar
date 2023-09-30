@@ -21,12 +21,15 @@ public class MissionTracker : MonoBehaviour
 
     public bool IsMissionActive()
     {
+        if (useTransform) 
+            isActiveMission = missionObjective && missionObjective.gameObject.activeInHierarchy;
+
         return isActiveMission;
     }
 
     public Vector3 GetMissionPosition() 
     {
-        return (useTransform && missionObjective) ? missionObjective.position : missionPosition; 
+        return (useTransform && missionObjective.gameObject.activeInHierarchy) ? missionObjective.position : missionPosition; 
     }
 
     public void SetMissionObjective(Transform target)

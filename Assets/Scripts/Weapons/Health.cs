@@ -21,10 +21,14 @@ public class Health : MonoBehaviour
     private bool isInvincible = false;
     private bool hasDied = false;
 
+    private void Awake()
+    {
+        health = maxHealth;
+    }
+
     private void Start()
     {
         isHealthRelay = healthRelay != null;
-        health = maxHealth;
     }
 
     private void Update()

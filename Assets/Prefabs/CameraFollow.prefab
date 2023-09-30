@@ -58,7 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerVelocityInfluenceScale: 3
-  cursorPositionInfluence: 0.2
+  cursorPositionMaxDistance: 0
+  cursorPositionInfluenceScale: 0
 --- !u!1 &4458021960651533671
 GameObject:
   m_ObjectHideFlags: 0

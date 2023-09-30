@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSlot: -1
   serializedGuid: 67e9f5ae-dd9b-4385-90d1-b3fe38054941
-  progressionPoints: []
+  progressionPoints:
+  - {fileID: 6044372964362386677}
+  - {fileID: -7114382206063331309}
+  - {fileID: -7012803687161593660}
   lastCompleted: -1
 --- !u!114 &-7812028333475687941
 MonoBehaviour:
@@ -35,6 +38,61 @@ MonoBehaviour:
       m_Calls: []
   dependencies:
   - {fileID: 11400000, guid: 111ea955c0de33646a8497edc5a6fd61, type: 2}
+--- !u!114 &-7114382206063331309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: DefeatEnemyQuest_1|KillEnemies
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 24f9f224-3b80-4f12-8807-449447096656
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies:
+  - {fileID: 11400000, guid: c3890a3bc6b9d1147a01d9686d603824, type: 2}
+--- !u!114 &-7012803687161593660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: DefeatEnemyQuest_2|FinishQuest
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 600f5721-2ee6-4fe5-8586-770ada2dc330
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies: []
+--- !u!114 &-2450734692116808625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: ProgressionPointAsset_2
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 0d1f9161-f1eb-4698-88b2-f4db718f477b
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies: []
 --- !u!114 &-2381906780014606447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b8b251ddb545645ab6afbfb3dbdf55, type: 3}
   m_Name: TestQuest
   m_EditorClassIdentifier: 
-  saveSlot: -1
+  saveSlot: 0
   serializedGuid: 93e6eb2704415624d983f5031d32945a
   quests:
   - {fileID: 3117663969078902577}
@@ -109,6 +167,24 @@ MonoBehaviour:
       m_Calls: []
   dependencies:
   - {fileID: 11400000, guid: bda8090566d779843bc43d7f999d2036, type: 2}
+--- !u!114 &6044372964362386677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: DefeatEnemyQuest_0|StartQuest
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: db17a51f-0ab0-46bb-9487-23fdb4626a39
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies: []
 --- !u!114 &7983990675045944552
 MonoBehaviour:
   m_ObjectHideFlags: 0
