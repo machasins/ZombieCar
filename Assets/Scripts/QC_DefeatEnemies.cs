@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DefeatEnemies : MonoBehaviour
+public class QC_DefeatEnemies : QuestCompletion
 {
-    public UnityEvent onDefeatAll;
-
     private Health[] enemies;
     private bool hasDefeatedAll;
 
@@ -26,7 +24,7 @@ public class DefeatEnemies : MonoBehaviour
 
             if (allDefeated)
             {
-                onDefeatAll.Invoke();
+                Complete();
                 hasDefeatedAll = true;
             }
         }

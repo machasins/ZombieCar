@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1672522460991822542}
   - component: {fileID: 1672522460991822543}
   - component: {fileID: 1672522460991822540}
+  - component: {fileID: 4792781459284690694}
   m_Layer: 0
   m_Name: NPC_Collect
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueAsset: {fileID: 4900000, guid: 8e4097edff6056f4a9ccbd4d1632f473, type: 3}
   questAsset: {fileID: 3117663969078902577, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
+--- !u!114 &4792781459284690694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672522460991822529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b9a7548433d9442b9a5b1586481d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 1672522460991822541}
 --- !u!1 &1672522461548856180
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,9 +150,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1672522461548856179}
   - component: {fileID: 1672522461548856191}
-  - component: {fileID: 1672522461548856176}
-  - component: {fileID: 1672522461548856177}
-  - component: {fileID: 1672522461548856178}
+  - component: {fileID: 4928248995158141149}
+  - component: {fileID: 6859979322565232027}
+  - component: {fileID: 4182939067190672966}
+  - component: {fileID: 5341925326907779663}
   m_Layer: 0
   m_Name: CollectQuest
   m_TagString: Untagged
@@ -190,9 +205,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1672522461560714541}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1672522461560714543}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -202,7 +217,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1672522461548856176
+--- !u!114 &4928248995158141149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,16 +226,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672522461548856180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d40f969c63d7b64394e80c8d01c69a1, type: 3}
+  m_Script: {fileID: 11500000, guid: ffe2d9124c07fa54492792b71a9c5e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 3117663969078902577, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
+--- !u!114 &6859979322565232027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672522461548856180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033a2e77006c87c4189b9ed29501ff07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   progressionPoint: {fileID: 7983990675045944552, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
   OnComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1672522461560714541}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1672522461560714543}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -230,7 +258,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &1672522461548856177
+  objective: {fileID: 0}
+--- !u!114 &4182939067190672966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,14 +268,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672522461548856180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d40f969c63d7b64394e80c8d01c69a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 033a2e77006c87c4189b9ed29501ff07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   progressionPoint: {fileID: 3389867950388075750, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1672522461548856178
+  objective: {fileID: 7998912469567033653}
+--- !u!114 &5341925326907779663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,13 +285,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672522461548856180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d40f969c63d7b64394e80c8d01c69a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 033a2e77006c87c4189b9ed29501ff07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   progressionPoint: {fileID: -7812028333475687941, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  objective: {fileID: 4792781459284690694}
 --- !u!1 &1672522461560714543
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +305,7 @@ GameObject:
   - component: {fileID: 1672522461560714540}
   - component: {fileID: 1672522461560714541}
   - component: {fileID: 1672522461560714542}
+  - component: {fileID: 7998912469567033653}
   m_Layer: 0
   m_Name: QuestObjective
   m_TagString: Untagged
@@ -386,30 +418,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099c434062cca804680e45c056d08c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCollect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: bda8090566d779843bc43d7f999d2036, type: 2}
-        m_TargetAssemblyTypeName: Progression.FlagDependency, Progression_Runtime
-        m_MethodName: set_Flag
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1672522461548856177}
-        m_TargetAssemblyTypeName: Progression.ProgressionPointComponent, Progression_Runtime
-        m_MethodName: Complete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  questPoint: {fileID: 3389867950388075750, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
+--- !u!114 &7998912469567033653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672522461560714543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b9a7548433d9442b9a5b1586481d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 1672522461560714539}

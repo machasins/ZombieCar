@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MissionObjectiveDisplay : MonoBehaviour
+public class QuestObjectiveDisplay : MonoBehaviour
 {
     public float verticalOffset;
     public Vector2 outOfViewBounds;
     public float movementTrackTime;
 
     private static WorldComponentReference wcr;
-    private MissionTracker missionTracker;
+    private QuestTracker questTracker;
     private Image marker;
     private RectTransform t;
 
@@ -24,7 +24,7 @@ public class MissionObjectiveDisplay : MonoBehaviour
         if (!wcr)
             wcr = FindObjectOfType<WorldComponentReference>();
 
-        missionTracker = wcr.GetComponent<MissionTracker>();
+        questTracker = wcr.GetComponent<QuestTracker>();
 
         marker = GetComponent<Image>();
         t = GetComponent<RectTransform>();
@@ -35,9 +35,11 @@ public class MissionObjectiveDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (missionTracker.IsMissionActive())
+        bool questActive = questTracker.GetQuestPosition(out Vector3 questPosition);
+
+        if (questActive)
         {
-            Vector3 missionPosition = missionTracker.GetMissionPosition() + Vector3.up * verticalOffset;
+            Vector3 missionPosition = questPosition + Vector3.up * verticalOffset;
             Vector2 camPos = wcr.cameraPosition.transform.position;
 
             Vector2 pos = new(missionPosition.x, missionPosition.y);
@@ -54,6 +56,6 @@ public class MissionObjectiveDisplay : MonoBehaviour
             //}
         }
 
-        marker.color = (missionTracker.IsMissionActive()) ? Color.white : Color.clear;
+        marker.color = (questActive) ? Color.white : Color.clear;
     }
 }
