@@ -29,7 +29,7 @@ public class DialogueRandomController : MonoBehaviour
 
     private void Update()
     {
-        if (canAttempt )//&& (!hasAIController || controller.GetCurrentState() != AIController.State.passive))
+        if (canAttempt && (!hasAIController || controller.GetCurrentState() != AIController.State.passive))
         {
             if (Random.value <= dialogueChance)
             {
