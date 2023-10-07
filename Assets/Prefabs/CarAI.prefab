@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 370892026071074459}
   - component: {fileID: 370892026071074450}
   - component: {fileID: 794067295629873725}
+  - component: {fileID: 5443784440902283924}
   m_Layer: 7
   m_Name: CarAI
   m_TagString: Untagged
@@ -765,6 +766,22 @@ MonoBehaviour:
   predictive: 0.545
   reckless: 0.502
   persistent: 0.593
+--- !u!114 &5443784440902283924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370892026071074533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72ca44af4480b84e95aea103bbc352c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueAsset: {fileID: 4900000, guid: 9173015f48b26cb41bf31e4ebc1a8ee9, type: 3}
+  minimumTimeBetweenDialogues: 5
+  timeBetweenAttempts: 0.1
+  dialogueChance: 1
 --- !u!1 &370892026090652691
 GameObject:
   m_ObjectHideFlags: 0

@@ -311,6 +311,11 @@ public class AIController : MonoBehaviour
         }
     }
 
+    public State GetCurrentState()
+    {
+        return state;
+    }
+
     private float GetChance(string variablePrefix)
     {
         int baseChance = (int) typeof(AIWorldReference).GetField(variablePrefix + "Likelyhood").GetValue(awr);
@@ -381,6 +386,7 @@ public class AIController : MonoBehaviour
             if (swapStateBehaviors.Count <= 0)
                 return;
 
+            previousBehaviorIndex -= 1;
             previousBehaviorIndex = GetNewBehavior(swapStateBehaviors, swapStateChances, swapStateTotalChances);
 
             time = Time.time + awr.minSwitchTime + awr.maxSwitchVariance * ((state == State.hostile) ? traits.aggressive : traits.patience);
@@ -404,7 +410,7 @@ public class AIController : MonoBehaviour
         if (stateBehaviors.Count <= 0)
             return previousBehaviorIndex;
 
-        if (previousBehaviorIndex >= 0 && Random.value < traits.predictive)
+        if (previousBehaviorIndex >= 0 && previousBehaviorIndex < stateBehaviors.Count && Random.value <= traits.predictive)
         {
             stateBehaviors[previousBehaviorIndex].enabled = true;
             return previousBehaviorIndex;

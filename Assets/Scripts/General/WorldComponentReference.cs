@@ -11,7 +11,7 @@ public class WorldComponentReference : MonoBehaviour
     public GameObject upgradeMenu;
 
     public GameObject dialogueDisplay;
-    public GameObject worldDialogueDisplay;
+    public GameObject dialogueRandomDisplay;
 
     public InputActionReference weaponFireInput;
     public InputActionReference interactInput;

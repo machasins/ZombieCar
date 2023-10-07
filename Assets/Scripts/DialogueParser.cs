@@ -1,15 +1,12 @@
 using Ink.Runtime;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Progression;
 using TMPro;
 using UnityEngine.UI;
 using KoganeUnityLib;
 using DG.Tweening;
 using UnityEngine.InputSystem;
-using System;
 
 public class DialogueParser : MonoBehaviour
 {
@@ -53,10 +50,15 @@ public class DialogueParser : MonoBehaviour
         story = new Story(dialogueAsset.text);
         quest = questAsset;
 
-        ProgressionPointAsset[] points = quest.GetProgressionPoints();
+        if (questAsset)
+        {
+            ProgressionPointAsset[] points = quest.GetProgressionPoints();
 
-        for (int i = 0; i < points.Length; ++i)
-            story.variablesState["quest_" + i] = points[i].IsComplete();
+            for (int i = 0; i < points.Length; ++i)
+                story.variablesState["quest_" + i] = points[i].IsComplete();
+        }
+        else
+            quest = null;
 
         AdvanceDialogue();
     }
@@ -137,12 +139,15 @@ public class DialogueParser : MonoBehaviour
 
     private void OnEnd()
     {
-        ProgressionPointAsset[] points = quest.GetProgressionPoints();
-
-        for (int i = 0; i < points.Length; ++i)
+        if (quest)
         {
-            if (!points[i].IsComplete() && (bool)story.variablesState["quest_" + i])
-                points[i].Complete();
+            ProgressionPointAsset[] points = quest.GetProgressionPoints();
+
+            for (int i = 0; i < points.Length; ++i)
+            {
+                if (!points[i].IsComplete() && (bool)story.variablesState["quest_" + i])
+                    points[i].Complete();
+            }
         }
 
         group.DOFade(0.0f, 0.25f).SetUpdate(true);

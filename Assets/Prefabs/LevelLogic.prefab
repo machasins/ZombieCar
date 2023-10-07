@@ -214,7 +214,7 @@ MonoBehaviour:
   cameraPosition: {fileID: 652645759444862504}
   upgradeMenu: {fileID: 1055672218471534129}
   dialogueDisplay: {fileID: 5166805860575954844}
-  worldDialogueDisplay: {fileID: 4782439649371571750}
+  dialogueRandomDisplay: {fileID: 4782439649371571750}
   weaponFireInput: {fileID: 1120369429361536294, guid: 6550009cb0bcc1b4caaff1020a38fcc6, type: 3}
   interactInput: {fileID: -6710946641585865500, guid: 6550009cb0bcc1b4caaff1020a38fcc6, type: 3}
 --- !u!114 &652645759183231469
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingObjective: {fileID: 0}
+  startingQuest: {fileID: 0}
 --- !u!114 &9016253398101605947
 MonoBehaviour:
   m_ObjectHideFlags: 0
