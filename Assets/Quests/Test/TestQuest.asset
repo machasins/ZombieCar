@@ -19,6 +19,27 @@ MonoBehaviour:
   - {fileID: -7114382206063331309}
   - {fileID: -7012803687161593660}
   lastCompleted: -1
+--- !u!114 &-8414360149113578242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: ElaborateQuest_3|KillEnemies
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 933e3c39-affc-4a0a-ba17-fbf2d2773082
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies:
+  - {fileID: 11400000, guid: 13bc5bbdc4d97094d8f9c188050c0502, type: 2}
+  - {fileID: 11400000, guid: 852e308689e4c0c48af45664c9c61044, type: 2}
+  - {fileID: 11400000, guid: e260cfcb90e20944e8ac996821cfb151, type: 2}
 --- !u!114 &-7812028333475687941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,8 +76,7 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls: []
-  dependencies:
-  - {fileID: 11400000, guid: c3890a3bc6b9d1147a01d9686d603824, type: 2}
+  dependencies: []
 --- !u!114 &-7012803687161593660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,12 +123,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5118f258e43509745830ee9624570506, type: 3}
-  m_Name: GoToLocationQuest
+  m_Name: ElaborateQuest
   m_EditorClassIdentifier: 
   saveSlot: -1
   serializedGuid: 3bc330df-2caa-4a50-82b9-e2f409592647
-  progressionPoints: []
+  progressionPoints:
+  - {fileID: 55339955724944704}
+  - {fileID: 1744050900508713546}
+  - {fileID: 3067077111037747689}
+  - {fileID: -8414360149113578242}
+  - {fileID: -1890346437381890936}
   lastCompleted: -1
+--- !u!114 &-1890346437381890936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: ElaborateQuest_4|Finish
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: ef468b66-c705-4a49-bd5e-ceeb581739d6
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +171,63 @@ MonoBehaviour:
   - {fileID: -8586332349995693073}
   - {fileID: -2381906780014606447}
   progressionPoints: []
+  dependencies: []
+--- !u!114 &55339955724944704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: ElaborateQuest_0|Start
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 16f10899-10bc-446e-aa95-8bec34122e61
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies: []
+--- !u!114 &1744050900508713546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: ElaborateQuest_1|PickupMultiple
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: b592a5e0-a683-440e-b25b-d8362f490810
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  dependencies:
+  - {fileID: 11400000, guid: 07325f386d4c1964882c8b1ea5d7bc5e, type: 2}
+  - {fileID: 11400000, guid: e7feaefa1f98fec4a9d5b93aa9d3401a, type: 2}
+  - {fileID: 11400000, guid: 2d5483604c678a54ea55cf0913041733, type: 2}
+--- !u!114 &3067077111037747689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61ba107c0d28dc4d94053077e8e9be1, type: 3}
+  m_Name: ElaborateQuest_2|ReturnItems
+  m_EditorClassIdentifier: 
+  saveSlot: -1
+  serializedGuid: 69d76bb9-7bc5-4bdd-a8d8-9f28167c6628
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
   dependencies: []
 --- !u!114 &3117663969078902577
 MonoBehaviour:
@@ -165,8 +265,7 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls: []
-  dependencies:
-  - {fileID: 11400000, guid: bda8090566d779843bc43d7f999d2036, type: 2}
+  dependencies: []
 --- !u!114 &6044372964362386677
 MonoBehaviour:
   m_ObjectHideFlags: 0

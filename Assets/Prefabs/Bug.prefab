@@ -352,13 +352,12 @@ GameObject:
   - component: {fileID: 9026987173345969231}
   - component: {fileID: 9026987173345969200}
   - component: {fileID: 9026987173345969201}
+  - component: {fileID: 9026987173345969227}
   - component: {fileID: 9026987173345969202}
   - component: {fileID: 9026987173345969203}
   - component: {fileID: 9026987173345969230}
-  - component: {fileID: 9026987173345969204}
-  - component: {fileID: 9026987173345969228}
   - component: {fileID: 9026987173345969229}
-  - component: {fileID: 9026987173345969227}
+  - component: {fileID: 2237667858608229256}
   m_Layer: 7
   m_Name: Bug
   m_TagString: Untagged
@@ -373,7 +372,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9026987173345969205}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.3, y: -4.29, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
@@ -430,6 +429,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9026987173345969227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026987173345969205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b67de64767f284ca857f382e67699e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthRelay: {fileID: 0}
+  maxHealth: 5
+  invincibilityTime: 0
+  damageType: 1
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9026987173345969205}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9026987173345969202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,39 +558,6 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
---- !u!114 &9026987173345969204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9026987173345969205}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
---- !u!114 &9026987173345969228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9026987173345969205}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e6c29e32504465faa943c537d8029b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  targets:
-  - {fileID: 9026987172170748599}
-  - {fileID: 9026987172040630825}
-  - {fileID: 9026987173030445299}
-  - {fileID: 9026987172190022730}
-  delay: 0.25
 --- !u!114 &9026987173345969229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,13 +570,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2621b2a73401c4db0cc7bea6913b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doPatrol: 1
-  patrolSpeed: 3
+  passive: 2
+  passiveTime: 5
+  passiveSpeed: 1
+  patrolPoints: []
+  wanderDistance: 10
+  delay: 1.5
+  spotRange: 20
+  rallyRange: 15
+  loseRange: 30
+  hostileSpeed: 1
+  doPursuit: 1
+  doCharge: 0
+  chargeDistance: 2
+  chargePower: 20
   doFollow: 1
-  followSpeed: 7.5
-  followRadius: 5
-  followLostRadius: 20
---- !u!114 &9026987173345969227
+  followDistance: 2
+  doFlank: 1
+  flankDistance: 2
+  doHitNRun: 0
+  nearDistance: 2
+  nearTime: 3.5
+  farDistance: 10
+  farTime: 3.5
+  breakDistance: 10
+  percentLost: 0
+  doCircle: 1
+  doDistance: 1
+  doStalk: 1
+  doStyle: 0
+  doFormation: 0
+  leader: {fileID: 0}
+  formation: []
+--- !u!114 &2237667858608229256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -582,31 +611,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9026987173345969205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b67de64767f284ca857f382e67699e, type: 3}
+  m_Script: {fileID: 11500000, guid: b08e4cafc234cb04f92951ef322a4cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRelay: {fileID: 0}
-  maxHealth: 5
-  invincibilityTime: 0
-  damageType: 1
-  onDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  onHeal:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9026987173345969205}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  aggressive: 0.5
+  intelligence: 0.5
+  patience: 0.5
+  skill: 0.5
+  predictive: 0.5
+  reckless: 0.5
+  persistent: 0.5

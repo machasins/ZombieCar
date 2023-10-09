@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 public class QuestCompletion : MonoBehaviour
 {
-    public ProgressionPointAsset questPoint;
+    public UnityEvent onComplete;
 
     public void Complete()
     {
-        questPoint.Complete();
+        onComplete.Invoke();
     }
 }

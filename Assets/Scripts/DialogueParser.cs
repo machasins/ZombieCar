@@ -22,6 +22,8 @@ public class DialogueParser : MonoBehaviour
     private Story story;
     private QuestAsset quest;
 
+    private Sprite originalCharacterSprite;
+
     TMP_Typewriter typewriter;
     CanvasGroup group;
 
@@ -35,6 +37,8 @@ public class DialogueParser : MonoBehaviour
         input = wcr.cameraPosition.GetComponent<PlayerInput>();
         typewriter = GetComponentInChildren<TMP_Typewriter>();
         group = GetComponent<CanvasGroup>();
+
+        originalCharacterSprite = characterSprite.sprite;
     }
 
     public void StartDialogue(TextAsset dialogueAsset, QuestAsset questAsset)
@@ -85,11 +89,14 @@ public class DialogueParser : MonoBehaviour
 
         if (story.canContinue)
         {
+            string text = story.Continue().Trim();
+            typewriter.Play(text, typewriterSpeed, null, true);
+
             string characterName = (string)story.variablesState["char_name"];
             nameText.text = characterName;
 
-            string text = story.Continue().Trim();
-            typewriter.Play(text, typewriterSpeed, null, true);
+            Sprite characterImage = Resources.Load<Sprite>("Characters/" + (string)story.variablesState["char_sprite"]);
+            characterSprite.sprite = (characterImage != null) ? characterImage : originalCharacterSprite;
 
             RemoveChildren(buttonContainer);
 

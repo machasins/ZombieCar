@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672522460991822529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.79, y: 3.25, z: 0}
+  m_LocalPosition: {x: 19.1, y: 3.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -321,7 +321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672522461560714543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.07, y: 14.86, z: 0}
+  m_LocalPosition: {x: 11.3, y: 23.2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -370,7 +370,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.91298866, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.26487303, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -418,7 +418,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099c434062cca804680e45c056d08c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questPoint: {fileID: 3389867950388075750, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
+  onComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3389867950388075750, guid: 93e6eb2704415624d983f5031d32945a, type: 2}
+        m_TargetAssemblyTypeName: Progression.ProgressionPointAsset, Progression_Runtime
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7998912469567033653
 MonoBehaviour:
   m_ObjectHideFlags: 0

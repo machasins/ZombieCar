@@ -1,5 +1,5 @@
 VAR char_name = "Old Man Jenkins"
-VAR char_sprite = ""
+VAR char_sprite = "test_old_man"
 
 VAR quest_2 = false
 VAR quest_1 = false

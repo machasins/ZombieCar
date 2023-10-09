@@ -21,6 +21,7 @@ public class DialogueRandomParser : MonoBehaviour
     private QuestAsset quest;
 
     private bool canAcceptDialogue = true;
+    private Sprite originalCharacterSprite;
 
     TMP_Typewriter typewriter;
     CanvasGroup group;
@@ -29,6 +30,8 @@ public class DialogueRandomParser : MonoBehaviour
     {
         typewriter = GetComponentInChildren<TMP_Typewriter>();
         group = GetComponent<CanvasGroup>();
+
+        originalCharacterSprite = characterSprite.sprite;
     }
 
     public void StartDialogue(TextAsset dialogueAsset, QuestAsset questAsset)
@@ -69,11 +72,14 @@ public class DialogueRandomParser : MonoBehaviour
 
         if (story.canContinue)
         {
+            string text = story.Continue().Trim();
+            typewriter.Play(text, typewriterSpeed, DelayAdvanceDialogue, false);
+
             string characterName = (string)story.variablesState["char_name"];
             nameText.text = characterName;
 
-            string text = story.Continue().Trim();
-            typewriter.Play(text, typewriterSpeed, DelayAdvanceDialogue, false);
+            Sprite characterImage = Resources.Load<Sprite>("Characters/" + (string)story.variablesState["char_sprite"]);
+            characterSprite.sprite = (characterImage != null) ? characterImage : originalCharacterSprite;
         }
         else if (story.currentChoices.Count > 0)
             story.ChooseChoiceIndex(Random.Range(0, story.currentChoices.Count));

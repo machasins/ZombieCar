@@ -1,5 +1,5 @@
-VAR char_name = "Old Man Jenkins"
-VAR char_sprite = ""
+VAR char_name = "Distressed David"
+VAR char_sprite = "test_sad"
 
 VAR quest_2 = false
 VAR quest_1 = false
@@ -24,11 +24,13 @@ VAR quest_0 = false
 -> END
 
 === defeated ===
+~ char_sprite = "test_happy"
 - Oh, thank you! You know not the pain you have alleved.
 - Please, this is all I can offer you in return.
 ~ quest_2 = true
 -> END
 
 === finished ===
+~ char_sprite = "test_happy"
 - Thank you again, hero!
 -> END
