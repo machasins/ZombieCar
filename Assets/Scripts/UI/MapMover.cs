@@ -31,23 +31,34 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private float zoomLevelPrev;
     private float zoomSliderPrev;
 
+    private bool isPaused = false;
+
     private void Awake()
     {
         t = GetComponent<RectTransform>();
 
         prevCursorPosition = t.position;
         targetPosition = prevCursorPosition;
-        movement = t.DOMove(targetPosition, movementInterpTime).SetAutoKill(false);
+        movement = t.DOMove(targetPosition, movementInterpTime).SetAutoKill(false).SetUpdate(true);
         prevPosition = targetPosition;
 
         zoomLevel = zoomDefault;
         zoomLevelPrev = zoomDefault;
         t.localScale = zoomLevel * Vector3.one;
-        zoom = t.DOScale(zoomLevel * Vector3.one, zoomInterpTime).SetAutoKill(false);
+        zoom = t.DOScale(zoomLevel * Vector3.one, zoomInterpTime).SetAutoKill(false).SetUpdate(true);
     }
 
     private void Update()
     {
+        if (Time.timeScale < 1.0f && !isPaused)
+        {
+            SetPivotInWorldSpace(t, t.parent.position);
+            isPaused = true;
+        }
+        else if (Time.timeScale >= 1.0f && isPaused)
+            isPaused = false;
+
+
         if (targetPosition != prevPosition)
         {
             movement.ChangeEndValue(targetPosition, true).Restart();
@@ -87,7 +98,6 @@ public class MapMover : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             targetPosition.z
         );
 
-        Debug.Log(point);
         prevCursorPosition = point;
     }
 

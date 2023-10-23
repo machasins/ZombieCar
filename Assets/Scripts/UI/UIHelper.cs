@@ -28,14 +28,14 @@ public class UIHelper : MonoBehaviour
 
     private IEnumerator FadeCoroutine(CanvasGroup c, float time, float from, float to)
     {
-        float totalTime = Time.time + time;
+        float totalTime = Time.unscaledTime + time;
 
         c.blocksRaycasts = false;
         c.interactable = false;
 
-        while (Time.time < totalTime)
+        while (Time.unscaledTime < totalTime)
         {
-            c.alpha = Mathf.Lerp(from, to, 1.0f - (totalTime - Time.time) / time);
+            c.alpha = Mathf.Lerp(from, to, 1.0f - (totalTime - Time.unscaledTime) / time);
             yield return null;
         }
 
